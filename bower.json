@@ -1,0 +1,26 @@
+{
+  "name": "react",
+  "description": "test react",
+  "main": "index.js",
+  "authors": [
+    "test"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "react"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "babel": "^5.8.38",
+    "marked": "^0.3.6"
+  }
+}

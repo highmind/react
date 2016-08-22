@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>react</title>
+ 
+</head>
+<body>
+
+<div id="mountNode"></div>
+<div id="content"></div>
+
+<script src="/bower_components/react/react.min.js"></script>
+<script src="/bower_components/react/react-dom.js"></script>
+<script src="/bower_components/babel/browser.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/marked/marked.min.js"></script>
+<script type="text/babel">
+// 评论数据
+
+// var data = [
+//   {author : '胡歌', text : '御剑江湖'},
+//   {author : '刘亦菲', text : '莫喜莫悲'}
+// ];
+
+// 评论列表组件
+  var CommentList = React.createClass({
+
+    render : function(){ //页面渲染，使用传入的数据进行渲染
+      var commentNodes = this.props.data.map(function(comment){
+        return (
+         <Comment author={comment.author}>
+          {comment.text}
+         </Comment>
+        )
+      });
+
+      return (
+        <div className="commentList">
+          {commentNodes}
+        </div>
+      );
+
+    }
+
+  });
+
+// 评论表单组件
+  var CommentForm = React.createClass({
+    handleSubmit:function(e){  // 表单提交操作
+      e.preventDefault();      //阻止默认行为
+      var author = this.refs.author.value.trim();
+      var text = this.refs.text.value.trim();
+      if(!text || !author){            //简单的验证
+        return;
+      }
+
+      this.props.onCommentSubmit({author:author,text:text});  //调用方法，向服务器发送数据
+      this.refs.author.value = '';     //将表单清空
+      this.refs.text.value= '';
+      return;
+    },
+    render:function(){  //渲染表单组件
+      return (
+        <form className="commentForm" onSubmit={this.handleSubmit}>  
+          <input type="text" placeholder="姓名" ref="author" />
+          <input type="text" placeholder="评论内容" ref="text" />
+          <input type="submit" value="发布"/>
+        </form>
+      );
+    }
+  });
+
+// 评论内容组件
+  var Comment = React.createClass({
+
+    rawMarkup: function(){   //marked 操作
+      var rawMarkup = marked(this.props.children.toString(),{sanitize:true});
+      return {__html: rawMarkup};
+    },
+
+    render: function(){  //渲染 评论内容
+      return (
+        <div className="comment">
+          <h3 className="commentAuthor">
+            {this.props.author}
+          </h3>
+          <span dangerouslySetInnerHTML = {this.rawMarkup()} />
+        </div>
+      );
+    }
+  });
+
+// 评论主体组件
+  var CommentBox = React.createClass({
+    //初始化组件状态
+    getInitialState:function(){
+      return {data:[]};
+    },
+
+    loadCommentsFromServer:function(){   //使用ajax方法从服务器获取 评论数据的方法
+
+      $.ajax({
+        url:this.props.url,
+        dataType:'json',
+        cache:false,
+        success:function(data){
+          console.log(data);
+          this.setState({data:data});
+        }.bind(this),
+
+        error:function(xhr, status, err){
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+
+      });
+    },
+
+    handleCommentSubmit:function(comment){  //表单提交的方法，使用ajax
+      var comments = this.state.data;
+      var newComments = comments.concat([comment]);
+      this.setState({data: newComments});
+      $.ajax({
+        url:this.props.url,
+        dataType : 'json',
+        type:'POST',
+        data:comment,
+        success:function(data){
+          this.setState({data:data});
+        }.bind(this),
+        error:function(xhr, status, err){
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+      });
+
+    },
+
+    // 组件被嵌入之后，触发的方法，用于 向服务器请求数据
+    componentDidMount: function(){
+      this.loadCommentsFromServer();
+      //setInterval(this.loadCommentsFromServer, this.props.pollInterval);//设置轮询
+    },
+
+    render: function(){  //渲染页面
+      return (
+        <div className="commentBox">
+          <h1>评论</h1>
+          <CommentList data={this.state.data}/>
+          <CommentForm  onCommentSubmit={this.handleCommentSubmit}/>
+        </div>
+      );
+    }
+  });
+
+  ReactDOM.render(<CommentBox url="/api/comments.json"  pollInterval={2000} />, document.getElementById('content'));
+
+
+</script>
+</body>
+</html>
