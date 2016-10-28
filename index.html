@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>react</title>
- 
+    <style>
+      .nav-con{transition:all ease 2s;border:1px solid red;}
+      .nav-con-show{display: block;}
+      .nav-con-hide{display: none;}
+    </style>
 </head>
 <body>
 
 <div id="mountNode"></div>
 <div id="content"></div>
+<div id="nav"></div>
 
 <script src="/bower_components/react/react.min.js"></script>
 <script src="/bower_components/react/react-dom.js"></script>
@@ -17,6 +22,33 @@
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/marked/marked.min.js"></script>
 <script type="text/babel">
+
+var Nav = React.createClass({
+ //获取初始state数据
+  getInitialState:function(){
+      return {show: false};
+    },
+  //组件上h4 点击事件
+  click:function(){
+    this.setState({
+      show: !this.state.show
+    })
+  },
+  //渲染 
+  //className={this.state.show ? 'nav-con-show' : 'nav-con-hide'}
+  //根据state数据 show的值，切换类
+  render : function(){
+    return (
+        <div>
+          <h4 onClick={this.click}>菜单</h4>
+          <div className={this.state.show ? 'nav-con nav-con-show' : 'nav-con nav-con-hide'}>
+            内容
+          </div>
+        </div>
+      );
+  }
+
+});
 // 评论数据
 
 // var data = [
@@ -155,6 +187,7 @@
 
   ReactDOM.render(<CommentBox url="/api/comments.json"  pollInterval={2000} />, document.getElementById('content'));
 
+ ReactDOM.render(<Nav />, document.getElementById('nav'));
 
 </script>
 </body>
