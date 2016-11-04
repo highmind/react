@@ -6,8 +6,10 @@
     <title>react</title>
     <style>
       .nav-con{transition:all ease 2s;border:1px solid red;}
-      .nav-con-show{display: block;}
-      .nav-con-hide{display: none;}
+      .nav-con-show,.news-con-show{display: block;}
+      .nav-con-hide,.news-con-hide{display: none;}
+      .news-list{width: 100%;overflow: hidden;}
+      .news-con{border-bottom:1px solid #ccc;padding:20px 0;}
     </style>
 </head>
 <body>
@@ -16,12 +18,132 @@
 <div id="content"></div>
 <div id="nav"></div>
 
+<div id="newslist">
+   
+</div>
+
 <script src="/bower_components/react/react.min.js"></script>
 <script src="/bower_components/react/react-dom.js"></script>
 <script src="/bower_components/babel/browser.min.js"></script>
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/marked/marked.min.js"></script>
 <script type="text/babel">
+var NewsCon = React.createClass({
+    render : function(){
+      return (
+        <div className="news-list">
+          <h3  onClick={this.props.handleClick}>{this.props.dataInfo.title}</h3>
+              <div className={this.props.showStatus ? 'news-con news-con-show' : 'news-con news-con-hide'}>
+                     
+                     <p>{this.props.dataInfo.abs}</p>
+                     <p>
+                      <span>{this.props.dataInfo.site}</span>
+                     </p>
+                   </div>
+              </div> 
+         );
+    }
+});
+
+// 新闻列表，使用百度新闻静态json
+var NewsList = React.createClass({
+    //初始化组件状态
+    getInitialState:function(){
+      return {
+        newsData:[],
+        show: false,
+        index:0
+      };
+    },
+
+    handleClick:function(index, e){
+      console.log(1);
+      this.setState(
+      {
+        // show:!this.state.show,
+        index: index
+
+      });
+
+
+    },
+
+   componentDidMount: function(){
+     $.ajax({
+        url:this.props.url,
+        dataType:'json',
+        cache:false,
+        success:function(data){
+          console.log(data.data.news);
+          this.setState({newsData:data.data.news});
+        }.bind(this),
+
+        error:function(xhr, status, err){
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+
+      });
+    },
+ render : function() {
+            var that = this;
+            var stateData = this.state;
+            var handleClick = this.handleClick;
+            return (<div>
+                {
+                  this.state.newsData.map(function(res,index){
+                    return (<NewsCon showStatus={that.state.index == index} handleClick={that.handleClick.bind(null,index)} dataInfo={res} />)
+                  })
+                }
+              </div>)
+            // return (<div className="accordion">
+            //     {
+            //       this.state.newsData.map(function(res, index) {
+            //         return (<NewsCon showStatus={this.state.showStatus} handleClick={handleClick.bind(null,index)} dataInfo={res})
+            //       }
+            //     }
+            // </div>);
+        }
+    // render:function(){
+    //    console.log(this.state);
+    //    // this.state.newsData.map(function(res){
+    //     // var showStatus = this.state.show;
+    //     // var handleClick= this.handleClick;
+    //     // var newsNodes = this.state.newsData.map(function(res,index){
+    //     //     return (
+    //     //        <div className="news-list">
+    //     //            <h3 data-num={index} onClick={handleClick}>{res.title}</h3>
+    //     //            <div className={showStatus ? 'news-con news-con-show' : 'news-con news-con-hide'}>
+                     
+    //     //              <p>{res.abs}</p>
+    //     //              <p>
+    //     //               <span>{res.site}</span>
+    //     //              </p>
+    //     //            </div>
+    //     //        </div> 
+    //     //     )
+    //     // });
+        
+    //     var showStatus = this.state.show;
+    //     var handleClick= this.handleClick;
+    //     var newsNodes = this.state.newsData.map(function(res,index){
+
+    //         return(
+    //            <NewsCon showStatus={showStatus} handleClick={handleClick.bind(null,index)} dataInfo={res} />
+    //           )
+    //     });
+
+
+    //     return (
+    //       <div>
+    //        {newsNodes}
+    //       </div>     
+    //     )    
+     
+    // }
+
+
+});
+
 
 var Nav = React.createClass({
  //获取初始state数据
@@ -29,7 +151,8 @@ var Nav = React.createClass({
       return {show: false};
     },
   //组件上h4 点击事件
-  click:function(){
+  handleClick:function(){
+    console.log(this.state);
     this.setState({
       show: !this.state.show
     })
@@ -40,7 +163,7 @@ var Nav = React.createClass({
   render : function(){
     return (
         <div>
-          <h4 onClick={this.click}>菜单</h4>
+          <h4 onClick={this.handleClick}>菜单</h4>
           <div className={this.state.show ? 'nav-con nav-con-show' : 'nav-con nav-con-hide'}>
             内容
           </div>
@@ -188,6 +311,7 @@ var Nav = React.createClass({
   ReactDOM.render(<CommentBox url="/api/comments.json"  pollInterval={2000} />, document.getElementById('content'));
 
  ReactDOM.render(<Nav />, document.getElementById('nav'));
+ ReactDOM.render(<NewsList url="/api/news.json" />, document.getElementById('newslist'));
 
 </script>
 </body>
