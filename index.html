@@ -8,31 +8,30 @@
       .nav-con{transition:all ease 2s;border:1px solid red;}
       .nav-con-show,.news-con-show{display: block;}
       .nav-con-hide,.news-con-hide{display: none;}
-      .news-list{width: 100%;overflow: hidden;}
-      .news-con{border-bottom:1px solid #ccc;padding:20px 0;}
+      .news-list{width: 100%;overflow: hidden;border-bottom:1px solid #ccc;}
+      .news-con{padding:20px 0;}
     </style>
 </head>
 <body>
 
+<div class="nav"></div>
+
+<div id="newslist"> </div>
 <div id="mountNode"></div>
 <div id="content"></div>
 <div id="nav"></div>
-
-<div id="newslist">
-   
-</div>
-
 <script src="/bower_components/react/react.min.js"></script>
 <script src="/bower_components/react/react-dom.js"></script>
 <script src="/bower_components/babel/browser.min.js"></script>
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/marked/marked.min.js"></script>
 <script type="text/babel">
+
 var NewsCon = React.createClass({
     render : function(){
       return (
         <div className="news-list">
-          <h3  onClick={this.props.handleClick}>{this.props.dataInfo.title}</h3>
+          <h3 onClick={this.props.handleClick}>{this.props.dataInfo.title}</h3>
               <div className={this.props.showStatus ? 'news-con news-con-show' : 'news-con news-con-hide'}>
                      
                      <p>{this.props.dataInfo.abs}</p>
@@ -47,7 +46,7 @@ var NewsCon = React.createClass({
 
 // 新闻列表，使用百度新闻静态json
 var NewsList = React.createClass({
-    //初始化组件状态
+    //初始化组件状态，获取初始state
     getInitialState:function(){
       return {
         newsData:[],
@@ -55,7 +54,7 @@ var NewsList = React.createClass({
         index:0
       };
     },
-
+    // 组件点击事件
     handleClick:function(index, e){
       console.log(1);
       this.setState(
@@ -67,7 +66,7 @@ var NewsList = React.createClass({
 
 
     },
-
+   // 组件被嵌入时，调用
    componentDidMount: function(){
      $.ajax({
         url:this.props.url,
@@ -75,6 +74,7 @@ var NewsList = React.createClass({
         cache:false,
         success:function(data){
           console.log(data.data.news);
+          // 数据获取成功以后，设置组件state
           this.setState({newsData:data.data.news});
         }.bind(this),
 
@@ -84,12 +84,12 @@ var NewsList = React.createClass({
 
       });
     },
- render : function() {
+   render : function() {
             var that = this;
             var stateData = this.state;
             var handleClick = this.handleClick;
             return (<div>
-                {
+                 { //遍历newsData数组
                   this.state.newsData.map(function(res,index){
                     return (<NewsCon showStatus={that.state.index == index} handleClick={that.handleClick.bind(null,index)} dataInfo={res} />)
                   })
