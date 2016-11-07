@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-
+<div id="container"></div>
 <div class="nav"></div>
 
 <div id="newslist"> </div>
@@ -26,6 +26,29 @@
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/marked/marked.min.js"></script>
 <script type="text/babel">
+// 测试一下ES6 语法
+// 测试一下 css-in-js 模式 
+const divStyle = {
+  color:'orange'
+};
+
+class WorldMessage extends React.Component{
+    render(){
+        return (
+            <h3 style={divStyle}>
+              {this.props.name}
+            </h3>
+        )
+    }
+}
+
+var container = document.getElementById('container');
+ReactDOM.render(<WorldMessage name="橙子新闻" />, container); 
+
+// 测试一下ES6 语法结束
+
+
+
 
 var NewsCon = React.createClass({
     render : function(){
