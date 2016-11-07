@@ -114,7 +114,7 @@ var NewsList = React.createClass({
             return (<div>
                  { //遍历newsData数组
                   this.state.newsData.map(function(res,index){
-                    return (<NewsCon showStatus={that.state.index == index} handleClick={that.handleClick.bind(null,index)} dataInfo={res} />)
+                    return (<NewsCon showStatus={that.state.index == index} handleClick={that.handleClick.bind(null,index)} dataInfo={res} key={index} />)
                   })
                 }
               </div>)
