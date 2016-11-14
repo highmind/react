@@ -10,9 +10,12 @@
       .nav-con-hide,.news-con-hide{display: none;}
       .news-list{width: 100%;overflow: hidden;border-bottom:1px solid #ccc;}
       .news-con{padding:20px 0;}
+      .active .dropdown{display: none;}
     </style>
 </head>
 <body>
+  <!-- 下拉菜单 -->
+<div id="dropdown"></div>
 <div id="container"></div>
 <div class="nav"></div>
 
@@ -20,12 +23,76 @@
 <div id="mountNode"></div>
 <div id="content"></div>
 <div id="nav"></div>
+
+
+
 <script src="/bower_components/react/react.min.js"></script>
 <script src="/bower_components/react/react-dom.js"></script>
 <script src="/bower_components/babel/browser.min.js"></script>
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/marked/marked.min.js"></script>
 <script type="text/babel">
+
+//下拉弹窗
+var text = "你好啊";
+var title = "标题";
+var dropwArr = [
+   {'id': 0, 'name' : '彭于晏' },
+   {'id': 1, 'name' : '彭于晏' },
+   {'id': 2, 'name' : '彭于晏' }
+];
+
+var Dropdown = React.createClass({
+
+  propTypes:{
+    text  :  React.PropTypes.string.isRequried,
+    title :  React.PropTypes.string,
+    option:  React.PropTypes.array.isRequired
+  },
+
+  getInitialState:function(){
+      return {
+        active : false
+      };
+  },
+
+  //响应用户点击事件的回调函数
+  toggleFold:function(){
+     console.log(this.state.active);
+     this.setState({
+      active: !this.state.acitve
+     });
+   
+  },
+
+  render: function(){
+    var optionsNodes = this.props.options.map(function(option){
+      console.log(option)
+          return (
+            <li key={option.id}>{option.name}</li>
+          );
+        }
+    );
+    
+    return (
+      // 点击事件回调函数
+      <div className={(this.state.active ? 'active' : '') +　" select"} onClick={this.toggleFold}> 
+        {this.props.text}
+        <div className="selector">
+           <i className="icon-down">点击我</i>
+        </div>
+        <ul className="dropdown">{optionsNodes}</ul>
+      </div>
+    );
+
+
+  }
+
+
+});
+
+ ReactDOM.render(<Dropdown text={text} title={title} options={dropwArr} />, document.getElementById('dropdown'));
+
 // 测试一下ES6 语法
 // 测试一下 css-in-js 模式 
 const divStyle = {
@@ -46,7 +113,6 @@ var container = document.getElementById('container');
 ReactDOM.render(<WorldMessage name="橙子新闻" />, container); 
 
 // 测试一下ES6 语法结束
-
 
 
 
@@ -335,6 +401,7 @@ var Nav = React.createClass({
 
  ReactDOM.render(<Nav />, document.getElementById('nav'));
  ReactDOM.render(<NewsList url="/api/news.json" />, document.getElementById('newslist'));
+
 
 </script>
 </body>
