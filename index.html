@@ -36,7 +36,7 @@
 //下拉弹窗
 var text = "你好啊";
 var title = "标题";
-var dropwArr = [
+var dropArr = [
    {'id': 0, 'name' : '彭于晏' },
    {'id': 1, 'name' : '彭于晏' },
    {'id': 2, 'name' : '彭于晏' }
@@ -60,7 +60,7 @@ var Dropdown = React.createClass({
   toggleFold:function(){
      console.log(this.state.active);
      this.setState({
-      active: !this.state.acitve
+      active: !this.state.active
      });
    
   },
@@ -91,7 +91,7 @@ var Dropdown = React.createClass({
 
 });
 
- ReactDOM.render(<Dropdown text={text} title={title} options={dropwArr} />, document.getElementById('dropdown'));
+ ReactDOM.render(<Dropdown text={text} title={title} options={dropArr} />, document.getElementById('dropdown'));
 
 // 测试一下ES6 语法
 // 测试一下 css-in-js 模式 
