@@ -1,0 +1,6 @@
+   .nav-con{transition:all ease 2s;border:1px solid red;}
+      .nav-con-show,.news-con-show{display: block;}
+      .nav-con-hide,.news-con-hide{display: none;}
+      .news-list{width: 100%;overflow: hidden;border-bottom:1px solid #ccc;}
+      .news-con{padding:20px 0;}
+      .active .dropdown{display: none;}
