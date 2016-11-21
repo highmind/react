@@ -28,10 +28,12 @@ module.exports = {
           presets: ['es2015', 'react'],
         },
       },
+      {test: /\.css$/, loader: "style!css"},
     ],
   },
   // devServer 则是 webpack-dev-server 设定
   devServer: {
+    host:'0.0.0.0',  //  使用本地ip访问
     inline: true,
     port: 8080,
   },

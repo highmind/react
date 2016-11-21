@@ -1,6 +1,10 @@
-   .nav-con{transition:all ease 2s;border:1px solid red;}
-      .nav-con-show,.news-con-show{display: block;}
-      .nav-con-hide,.news-con-hide{display: none;}
-      .news-list{width: 100%;overflow: hidden;border-bottom:1px solid #ccc;}
-      .news-con{padding:20px 0;}
-      .active .dropdown{display: none;}
+a{text-decoration: none;color:#000;}
+body,ul,li,p,h1,h2,h3,h4,h5{margin:0;padding:0;}
+.active .dropdown{display: none;}
+
+/*主导航*/
+.news-nav{padding-right:4%;position:relative;color:#fff;overflow:hidden;background-color: #3e98f0;padding-top:20px;}
+.news-nav a{float:left;width:16%;color:#fff;text-align: center;margin-bottom:20px;}
+.news-nav .news-more{display: block;width:26px;font-size:12px;position:absolute;right:10px;bottom:21px;}
+.news-nav .nav-link-active{display:block;}
+.news-nav .nav-link-disabled{display: none;}
