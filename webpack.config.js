@@ -15,6 +15,7 @@ module.exports = {
   // output 是放入产生出来的结果的相关参数
   output: {
     path: `${__dirname}/dist`,
+    // publicPath : ''
     filename: 'index_bundle.js',
   },
   module: {
@@ -29,6 +30,9 @@ module.exports = {
         },
       },
       {test: /\.css$/, loader: "style!css"},
+      {test: /\.(jpg|png|gif)$/, loader:"url?limit=8192"},
+      { test: /\.(ttf|woff|svg|eot)$/, loader: "file-loader" }
+
     ],
   },
   // devServer 则是 webpack-dev-server 设定
