@@ -2,7 +2,7 @@ import 'rc-select/assets/index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Select, {Option, OptGroup} from 'rc-select';
-import { Router, Route, IndexRoute, Link, hashHistory,browserHistory } from 'react-router'
+import { Router, Route, IndexRoute,IndexLink, Link, hashHistory,browserHistory } from 'react-router'
 import Rem from '../libs/js/rem'
 import '../libs/css/iconfont.css'; //iconfont.cn字体图标
 import './index.css';
@@ -92,19 +92,28 @@ var NewsNav = React.createClass({
       active:!this.state.active
     });
   },
-
+ //导航比较复杂，使用了react-router中的IndexLink处理，首页当前样式问题
   render : function(){
       var defaultNum = this.props.defaultNum || 11; 
       var active = this.state.active;
       var navNodes = this.props.data.map(function(detail,index){
-          if(index > defaultNum){
+          if(index == 0){
+            return(
+              <IndexLink key={index} to="/" activeClassName="route-active">
+                {detail.name}
+              </IndexLink>
+            );
+          }
+          else if(index > defaultNum){
             return(
               <NewsNavLink key={detail.id} name={detail.name} link={detail.link} active={active} />
             )
           }
-          return (
-            <NewsNavLink key={detail.id} name={detail.name} link={detail.link} active={true} />
-          );
+          else{
+            return (
+              <NewsNavLink key={detail.id} name={detail.name} link={detail.link} active={true} />
+            );
+          }
                
       })
 
