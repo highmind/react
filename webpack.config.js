@@ -30,8 +30,8 @@ module.exports = {
         },
       },
       {test: /\.css$/, loader: "style!css"},
-      {test: /\.(jpg|png|gif)$/, loader:"url?limit=8192"},
-      { test: /\.(ttf|woff|svg|eot)$/, loader: "file-loader" }
+      {test: /\.(jpg|png|gif)$/, loader:'url-loader?limit=5000&name=images/[hash:8].[name].[ext]'},
+      { test: /\.(ttf|woff|svg|eot)$/, loader: "file-loader?name=fonts/[hash:8].[name].[ext]" }
 
     ],
   },
