@@ -1,13 +1,13 @@
 import 'rc-select/assets/index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Select, {Option, OptGroup} from 'rc-select';
+import Select, {Option, OptGroup} from 'rc-select'; 
 import { Router, Route, IndexRoute,IndexLink, Link, hashHistory,browserHistory } from 'react-router'
-import Rem from '../libs/js/rem'
-import '../libs/css/iconfont.css'; //iconfont.cn字体图标
-import './index.css';
+import Rem from '../libs/js/rem';  //处理rem的js
+import '../libs/css/iconfont.css'; //iconfont.cn字体图标，需去掉?传值
+import './index.css';              //首页css
 import Axios from'axios'; //引入axios处理ajax
-// 主导航
+// 主导航数据
 var newsNavData = [
   {id:0, name:'推荐', link: 'index/tuijian'},
   {id:1, name:'百家', link: 'index/baijia'},
@@ -58,7 +58,7 @@ var  IcoLink = React.createClass({
 
 
 // 导航组件
-// 配合react-router，不是要a标签，使用link
+// 配合react-router，不使用a标签，使用link
 var NewsNavLink = React.createClass({
   propTypes:{
     name: React.PropTypes.string.isRequired,
@@ -87,18 +87,19 @@ var NewsNav = React.createClass({
         active : false
     };
   },
-
+ //触发时，更改激活状态
   toggleDown : function(){
     this.setState({
       active:!this.state.active
     });
   },
- //导航比较复杂，使用了react-router中的IndexLink处理，首页当前样式问题
+ //导航比较复杂，使用了react-router中的IndexLink，处理首页当前样式问题
   render : function(){
       var defaultNum = this.props.defaultNum || 11; 
       var active = this.state.active;
+      // 当导航链接超过一定数量，隐藏超出的链接
       var navNodes = this.props.data.map(function(detail,index){
-          if(index == 0){
+          if(index == 0){ //页面进入时，激活当前状态，使用react-router
             return(
               <IndexLink key={index} to="/" activeClassName="route-active">
                 {detail.name}
@@ -151,7 +152,8 @@ var  Head = React.createClass({
 
 
 
-// 新闻组件
+// 新闻组件静态数据
+//图片路径使用 require，用于webpack打包
 // var newsData = [
 //     {
 //       url: "http://www.baidu.com",
@@ -192,7 +194,7 @@ var  Head = React.createClass({
   
 // ];
 
-// 百家栏目数据
+// 百家栏目列表数据
 // var newsDataBJ = [
 //     {
 //       url: "http://www.baidu.com",
@@ -266,9 +268,9 @@ var NewsLi = React.createClass({
 // 新闻列表
 var  NewsList = React.createClass({
 
-     // propsTypes:{
-     //   data: React.PropsTypes.array.isRequired
-     // },
+      propsTypes:{
+        data: React.PropsTypes.array.isRequired
+      },
 
      render : function(){
         var newsNodes = this.props.data.map(function(detailData, index){
@@ -287,9 +289,8 @@ var  NewsList = React.createClass({
 });
 
 
-// 路由设置
-// var Router
-// <NewsList data={newsData} />
+// 主容器组件
+// this.props.children这里用于路由切换时，传入组件
 var  App = React.createClass({
 
      getInitialState : function(){
@@ -309,6 +310,8 @@ var  App = React.createClass({
 
 });
 
+//旧版本中，切换导航路由时，使用单独的组件插入，后发现组件结构一致，后续版本更改为
+//一个组件插入，根据导航路由传参，修改组件
 // var Index = React.createClass({
 
 //      getInitialState : function(){
@@ -375,13 +378,7 @@ var Index = React.createClass({
       getData : function(id){
         var self = this;
         var url = 'http://localhost:8080/api/news' + id +'.json';
-        Axios.get(url).then({
-
-          params: {
-            callback: 'test'
-          }
-
-        }).then(function(res){
+        Axios.get(url).then(function(res){
           console.log(res.data);
           self.setState({
             data : res.data
@@ -392,10 +389,9 @@ var Index = React.createClass({
       },
 
       getInitialState : function(){
-        // 这里测试跨域访问，对业务逻辑我实际意义需要apache开启 跨域访问
+        // 这里测试跨域访问，对业务逻辑无实际意义需,要apache开启跨域访问
         var url = 'http://localhost/api/news.json';
-        Axios.get(url).then({
-        }).then(function(res){
+        Axios.get(url).then(function(res){
           console.log(res.data); 
         })
         // 第一步
@@ -414,7 +410,7 @@ var Index = React.createClass({
         this.getData('tuijian');
        
       },
-
+      //完成渲染新的props或state时，调用
       componentDidUpdate: function(prevProps) {
         // 上面步骤3，通过参数更新数据
         var oldId = prevProps.params.id;
