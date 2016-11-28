@@ -26,7 +26,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react'],
+          presets: ['es2015', 'react',],
         },
       },
       {test: /\.css$/, loader: "style!css"},
@@ -42,5 +42,5 @@ module.exports = {
     port: 8080,
   },
   // plugins 放置所使用的外挂
-  plugins: [HTMLWebpackPluginConfig],
+  plugins: [HTMLWebpackPluginConfig,],
 };

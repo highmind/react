@@ -6,11 +6,12 @@ import { Router, Route, IndexRoute,IndexLink, Link, hashHistory,browserHistory }
 import Rem from '../libs/js/rem'
 import '../libs/css/iconfont.css'; //iconfont.cn字体图标
 import './index.css';
+import Axios from'axios'; //引入axios处理ajax
 // 主导航
 var newsNavData = [
-  {id:0, name:'推荐', link: 'tuijian'},
-  {id:1, name:'百家', link: 'baijia'},
-  {id:2, name:'本地', link: 'baijia1'},
+  {id:0, name:'推荐', link: 'index/tuijian'},
+  {id:1, name:'百家', link: 'index/baijia'},
+  {id:2, name:'本地', link: 'index/bendi'},
   {id:3, name:'图片', link: 'baijia2'},
   {id:4, name:'娱乐', link: 'baijia3'},
   {id:5, name:'社会', link: 'baijia4'},
@@ -151,86 +152,87 @@ var  Head = React.createClass({
 
 
 // 新闻组件
-var newsData = [
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img1.jpg'),//require 用于webpack打包图片
-      time : '10分钟前',
-      title : '苹果手机曝出奇葩故障：播放这段五秒视频就死机'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img2.jpg'),
-      time : '20分钟前',
-      title : '谣言止于智者，乐视芯片被断货消息不实！'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img3.jpg'),
-      time : '30分钟前',
-      title : '乔纳森不再负责苹果产品设计？究竟是怎么了'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img4.jpg'),
-      time : '40分钟前',
-      title : 'OPPO和vivo如何延续增长？'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img5.jpg'),
-      time : '50分钟前',
-      title : '亚欧14国ATM机被攻击自动吐钱，或与东欧黑客团体有关'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img6.jpg'),
-      time : '60分钟前',
-      title : '卡巴斯基：黑五金融钓鱼攻击数量激增'
-    },
+// var newsData = [
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img1.jpg'),//require 用于webpack打包图片
+//       time : '10分钟前',
+//       title : '苹果手机曝出奇葩故障：播放这段五秒视频就死机'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img2.jpg'),
+//       time : '20分钟前',
+//       title : '谣言止于智者，乐视芯片被断货消息不实！'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img3.jpg'),
+//       time : '30分钟前',
+//       title : '乔纳森不再负责苹果产品设计？究竟是怎么了'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img4.jpg'),
+//       time : '40分钟前',
+//       title : 'OPPO和vivo如何延续增长？'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img5.jpg'),
+//       time : '50分钟前',
+//       title : '亚欧14国ATM机被攻击自动吐钱，或与东欧黑客团体有关'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img6.jpg'),
+//       time : '60分钟前',
+//       title : '卡巴斯基：黑五金融钓鱼攻击数量激增'
+//     },
   
-];
+// ];
 
 // 百家栏目数据
-var newsDataBJ = [
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img1.jpg'),
-      time : '10分钟前',
-      title : '苹果手机曝出奇葩故障：播放这段五秒视频就死机-百家'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img2.jpg'),
-      time : '20分钟前',
-      title : '谣言止于智者，乐视芯片被断货消息不实！-百家'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img3.jpg'),
-      time : '30分钟前',
-      title : '乔纳森不再负责苹果产品设计？究竟是怎么了-百家'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img4.jpg'),
-      time : '40分钟前',
-      title : 'OPPO和vivo如何延续增长？-百家'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img5.jpg'),
-      time : '50分钟前',
-      title : '亚欧14国ATM机被攻击自动吐钱，或与东欧黑客团体有关-百家'
-    },
-    {
-      url: "http://www.baidu.com",
-      imgUrl : require('../images/news-img6.jpg'),
-      time : '60分钟前',
-      title : '卡巴斯基：黑五金融钓鱼攻击数量激增-百家'
-    },
+// var newsDataBJ = [
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img1.jpg'),
+//       time : '10分钟前',
+//       title : '苹果手机曝出奇葩故障：播放这段五秒视频就死机-百家'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img2.jpg'),
+//       time : '20分钟前',
+//       title : '谣言止于智者，乐视芯片被断货消息不实！-百家'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img3.jpg'),
+//       time : '30分钟前',
+//       title : '乔纳森不再负责苹果产品设计？究竟是怎么了-百家'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img4.jpg'),
+//       time : '40分钟前',
+//       title : 'OPPO和vivo如何延续增长？-百家'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img5.jpg'),
+//       time : '50分钟前',
+//       title : '亚欧14国ATM机被攻击自动吐钱，或与东欧黑客团体有关-百家'
+//     },
+//     {
+//       url: "http://www.baidu.com",
+//       imgUrl : require('../images/news-img6.jpg'),
+//       time : '60分钟前',
+//       title : '卡巴斯基：黑五金融钓鱼攻击数量激增-百家'
+//     },
   
-];
+// ];
+
 
 
 // 新闻列表项组件
@@ -307,40 +309,161 @@ var  App = React.createClass({
 
 });
 
+// var Index = React.createClass({
+
+//      getInitialState : function(){
+//         return {};
+
+//      },
+
+//      render: function(){
+//         return(
+//           <div>
+//             <NewsList data={newsData} />
+//           </div>
+//         );
+//      }
+
+// });
+
+// var BaiJia = React.createClass({
+
+//      getInitialState : function(){
+//         return {};
+
+//      },
+
+//      render: function(){
+//         return(
+//           <div>
+//             <NewsList data={newsDataBJ} />
+//           </div>
+//         );
+//      }
+
+// });
+
+
 var Index = React.createClass({
+    // componentWillReceiveProps: function (nextProps) {
+    //     var id = this.props.params.id;
+    //    console.log("id是 " + id + " componetWillReceiveProps")
+    //     if(id == 'undefined'){
+    //       console.log(111);
+    //       console.log("id是 " + id + " componetWillReceiveProps")
+    //       this.setState({
+    //           data : newsData
+    //       })
+    //     }
 
-     getInitialState : function(){
-        return {};
+    //     else if(id == 'baijia'){
+    //       console.log("百家-componetWillReceiveProps")
+    //       this.setState({
+    //           data : newsDataBJ
+    //       })
+    //     }
 
-     },
+    //     else if(id == 'bendi'){
+    //       console.log("本地-componetWillReceiveProps")
+    //       this.setState({
+    //           data : newsDataBD
+    //       })
+    //     }
+        
+    //   },
+      // 使用axios获取假数据
+      getData : function(id){
+        var self = this;
+        var url = 'http://localhost:8080/api/news' + id +'.json';
+        Axios.get(url).then({
+
+          params: {
+            callback: 'test'
+          }
+
+        }).then(function(res){
+          console.log(res.data);
+          self.setState({
+            data : res.data
+          })
+          
+        })
+        
+      },
+
+      getInitialState : function(){
+        // 这里测试跨域访问，对业务逻辑我实际意义需要apache开启 跨域访问
+        var url = 'http://localhost/api/movie1.php';
+        Axios.get(url).then({
+        }).then(function(res){
+          console.log(res.data); 
+        })
+        // 第一步
+        console.log('getInitialState')
+        return {
+          data : []
+        };
+
+      },
+
+      componentDidMount: function(){
+        
+        // 上面的步骤2，在此初始化数据
+        console.log('componentDidMount')
+        // 初始化数据
+        this.getData('tuijian');
+       
+      },
+
+      componentDidUpdate: function(prevProps) {
+        // 上面步骤3，通过参数更新数据
+        var oldId = prevProps.params.id;
+        console.log('oldId '+ oldId)
+        var id = this.props.params.id;
+        console.log('newId '+ id)
+        if (id !== oldId){
+            // 如果路由获取不到参数，获取推荐数据
+            if(typeof(id) == 'undefined'){
+              console.log(111);
+              console.log("id是 " + id + " componetWillReceiveProps")
+              this.getData('tuijian');
+            }
+            // 否则获取相应栏目数据，根据id查询
+            else {
+              console.log("百家-componetWillReceiveProps")
+              this.getData(id);
+            }
+
+        }
+     
+      },
+
+      componentWillUnmount: function() {
+        // 上面步骤四，在组件移除前忽略正在进行中的请求
+        // this.ignoreLastFetch = true
+      },
+
+    
+
+      componentWillMount:function(){
+        console.log('componentWillMount')
+        // this.setState({
+        //       data : newsData
+        //   })
+      },
+
+   
+  
 
      render: function(){
         return(
           <div>
-            <NewsList data={newsData} />
+            <NewsList data={this.state.data} />
           </div>
-        );
+        )
      }
 
 });
-
-var BaiJia = React.createClass({
-
-     getInitialState : function(){
-        return {};
-
-     },
-
-     render: function(){
-        return(
-          <div>
-            <NewsList data={newsDataBJ} />
-          </div>
-        );
-     }
-
-});
-
 
 ReactDOM.render((
 
@@ -348,8 +471,7 @@ ReactDOM.render((
     
     <Route path="/" component={App}>
       <IndexRoute component={Index} /> //首页
-      <Route path="tuijian" component={Index} /> //推荐
-      <Route path="baijia" component={BaiJia} /> //百家
+      <Route path="index/:id" component={Index} /> //本地
     </Route>
 
   </Router>
