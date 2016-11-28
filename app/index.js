@@ -393,7 +393,7 @@ var Index = React.createClass({
 
       getInitialState : function(){
         // 这里测试跨域访问，对业务逻辑我实际意义需要apache开启 跨域访问
-        var url = 'http://localhost/api/movie1.php';
+        var url = 'http://localhost/api/news.json';
         Axios.get(url).then({
         }).then(function(res){
           console.log(res.data); 
