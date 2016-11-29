@@ -33,6 +33,7 @@ var newsNavData = [
 
 ];
 
+
 // 图标链接组件
 // <IcoLink link={"http://www.baidu.com"} icoType={"iconfont icon-user"} linkCls={"user-center-btn"}  />
 // link 链接地址
@@ -98,7 +99,7 @@ var NewsNav = React.createClass({
       var defaultNum = this.props.defaultNum || 11; 
       var active = this.state.active;
       // 当导航链接超过一定数量，隐藏超出的链接
-      var navNodes = this.props.data.map(function(detail,index){
+      var navNodes = this.props.data.map(function(detail, index){
           if(index == 0){ //页面进入时，激活当前状态，使用react-router
             return(
               <IndexLink key={index} to="/" activeClassName="route-active">
@@ -269,7 +270,7 @@ var NewsLi = React.createClass({
 var  NewsList = React.createClass({
 
       propsTypes:{
-        data: React.PropsTypes.array.isRequired
+        data: React.PropTypes.array.isRequired
       },
 
      render : function(){
@@ -348,37 +349,13 @@ var  App = React.createClass({
 
 
 var Index = React.createClass({
-    // componentWillReceiveProps: function (nextProps) {
-    //     var id = this.props.params.id;
-    //    console.log("id是 " + id + " componetWillReceiveProps")
-    //     if(id == 'undefined'){
-    //       console.log(111);
-    //       console.log("id是 " + id + " componetWillReceiveProps")
-    //       this.setState({
-    //           data : newsData
-    //       })
-    //     }
-
-    //     else if(id == 'baijia'){
-    //       console.log("百家-componetWillReceiveProps")
-    //       this.setState({
-    //           data : newsDataBJ
-    //       })
-    //     }
-
-    //     else if(id == 'bendi'){
-    //       console.log("本地-componetWillReceiveProps")
-    //       this.setState({
-    //           data : newsDataBD
-    //       })
-    //     }
-        
-    //   },
       // 使用axios获取假数据
       getData : function(id){
         var self = this;
         var url = 'http://localhost:8080/api/news' + id +'.json';
+        console.log('请求的url为：' + url);
         Axios.get(url).then(function(res){
+          console.log('获取到的数据为：');
           console.log(res.data);
           self.setState({
             data : res.data
@@ -395,7 +372,7 @@ var Index = React.createClass({
           console.log(res.data); 
         })
         // 第一步
-        console.log('getInitialState')
+        console.log('执行getInitialState')
         return {
           data : []
         };
@@ -405,7 +382,7 @@ var Index = React.createClass({
       componentDidMount: function(){
         
         // 上面的步骤2，在此初始化数据
-        console.log('componentDidMount')
+        console.log('执行componentDidMount')
         // 初始化数据
         this.getData('tuijian');
        
@@ -442,7 +419,7 @@ var Index = React.createClass({
     
 
       componentWillMount:function(){
-        console.log('componentWillMount')
+        console.log('执行componentWillMount')
         // this.setState({
         //       data : newsData
         //   })
