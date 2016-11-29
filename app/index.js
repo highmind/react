@@ -4,9 +4,11 @@ import ReactDOM from 'react-dom';
 import Select, {Option, OptGroup} from 'rc-select'; 
 import { Router, Route, IndexRoute,IndexLink, Link, hashHistory,browserHistory } from 'react-router'
 import Rem from '../libs/js/rem';  //处理rem的js
-import '../libs/css/iconfont.css'; //iconfont.cn字体图标，需去掉?传值
+// import '../libs/css/iconfont.css'; //iconfont.cn字体图标，需去掉?传值
 import './index.css';              //首页css
 import Axios from'axios'; //引入axios处理ajax
+import {IcoLink} from './components'
+
 // 主导航数据
 var newsNavData = [
   {id:0, name:'推荐', link: 'index/tuijian'},
@@ -40,22 +42,6 @@ var newsNavData = [
 // icoType 图标类型，配合iconfont.cn 字体图标使用
 // linkCls 组件css类名，用于设置样式
 //  
-var  IcoLink = React.createClass({
-      propTypes:{
-        link: React.PropTypes.string.isRequired,
-        icoType : React.PropTypes.string.isRequired,
-        linkCls : React.PropTypes.string,
-        clickEvent : React.PropTypes.func
-      },
-
-     render : function(){
-        return(
-            <a href={this.props.link}  onClick={this.props.clickEvent} className={this.props.linkCls}>
-              <i className={this.props.icoType}></i>
-            </a>
-        );
-     }
-});
 
 
 // 导航组件
