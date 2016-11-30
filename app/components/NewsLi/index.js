@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './index.css';
 
 class NewsLi extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         // 相当于ES5 getInitalState
         this.state={
          

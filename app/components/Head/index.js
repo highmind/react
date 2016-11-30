@@ -3,8 +3,8 @@ import IcoLink from '../IcoLink';
 import './index.css';
 
 class Head extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         // 相当于ES5 getInitalState
         this.state={
          
