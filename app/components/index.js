@@ -1,2 +1,3 @@
-export { default as IcoLink } from './IcoLink'
-// export { default as NavLink } from './Nav'
+export { default as Head} from './Head'
+export { default as Nav} from './Nav'
+export { default as NewsList} from './NewsList'
