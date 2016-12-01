@@ -1,4 +1,12 @@
-// 这边使用 HtmlWebpackPlugin，将 bundle 好的 <script> 插入到 body。${__dirname} 为 ES6 语法对应到 __dirname  
+// 引入dashboard 优化命令行界面
+// var Dashboard = require('webpack-dashboard');
+// var DashboardPlugin = require('webpack-dashboard/plugin');
+// var dashboard = new Dashboard();
+// var  dashboardPlugin = new DashboardPlugin(dashboard.setData)
+
+// 这边使用 HtmlWebpackPlugin，将 bundle 好的 <script> 插入到 body。${__dirname} 为 ES6 语法对应到 __dirname
+// const webpack = require('webpack');
+//const hotModule = new webpack.HotModuleReplacementPlugin()//热加载插件   
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -31,16 +39,18 @@ module.exports = {
       },
       {test: /\.css$/, loader: "style!css"},
       {test: /\.(jpg|png|gif)$/, loader:'url-loader?limit=5000&name=images/[hash:8].[name].[ext]'},
-      { test: /\.(ttf|woff|svg|eot)$/, loader: "file-loader?name=fonts/[hash:8].[name].[ext]" }
+      {test: /\.(ttf|woff|svg|eot)$/, loader: "file-loader?name=fonts/[hash:8].[name].[ext]" }
 
     ],
   },
   // devServer 则是 webpack-dev-server 设定
   devServer: {
+    // hot:true,
     host:'0.0.0.0',  //  使用本地ip访问
     inline: true,
+    quiet: true,
     port: 8080,
   },
   // plugins 放置所使用的外挂
-  plugins: [HTMLWebpackPluginConfig,],
+  plugins: [HTMLWebpackPluginConfig,/*hotModule*/ ],
 };
