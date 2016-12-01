@@ -1,39 +1,43 @@
- [
+ {
+   
+   "data" : [
+
     {
-      "url": "http://www.baidu.com",
+      "url": "http://www.baidu.com1",
       "imgUrl" : "http://localhost:8080/images/news-img1.jpg",
       "time" : "10分钟前",
-      "title" : "苹果手机曝出奇葩故障：播放这段五秒视频就死机-百家"
+      "title" : "苹果手机曝出奇葩故障：播放这段五秒视频就死机-百家1"
     },
     {
-      "url": "http://www.baidu.com",
+      "url": "http://www.baidu.com2",
       "imgUrl" : "http://localhost:8080/images/news-img2.jpg",
       "time" : "20分钟前",
-      "title" : "谣言止于智者，乐视芯片被断货消息不实！-百家"
+      "title" : "谣言止于智者，乐视芯片被断货消息不实！-百家2"
     },
     {
-      "url": "http://www.baidu.com",
+      "url": "http://www.baidu.com3",
       "imgUrl" : "http://localhost:8080/images/news-img3.jpg",
       "time" : "30分钟前",
-      "title" : "乔纳森不再负责苹果产品设计？究竟是怎么了-百家"
+      "title" : "乔纳森不再负责苹果产品设计？究竟是怎么了-百家3"
     },
     {
-      "url": "http://www.baidu.com",
+      "url": "http://www.baidu.com4",
       "imgUrl" : "http://localhost:8080/images/news-img4.jpg",
       "time" : "40分钟前",
-      "title" : "OPPO和vivo如何延续增长？-百家"
+      "title" : "OPPO和vivo如何延续增长？-百家4"
     },
     {
-      "url": "http://www.baidu.com",
+      "url": "http://www.baidu.com5",
       "imgUrl" : "http://localhost:8080/images/news-img5.jpg",
       "time" : "50分钟前",
-      "title" : "亚欧14国ATM机被攻击自动吐钱，或与东欧黑客团体有关-百家"
+      "title" : "亚欧14国ATM机被攻击自动吐钱，或与东欧黑客团体有关-百家5"
     },
     {
-      "url": "http://www.baidu.com",
+      "url": "http://www.baidu.com6",
       "imgUrl" : "http://localhost:8080/images/news-img6.jpg",
       "time" : "60分钟前",
-      "title" : "卡巴斯基：黑五金融钓鱼攻击数量激增-百家"
+      "title" : "卡巴斯基：黑五金融钓鱼攻击数量激增-百家6"
     }
-  
-]
+   
+  ]
+}

@@ -20,6 +20,10 @@
     "webpack": "^1.13.3"
   },
   "devDependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mockjs": "^1.0.1-beta3",
+    "moment": "^2.17.0",
     "webpack-dashboard": "^0.2.0"
   },
   "scripts": {

@@ -6,21 +6,23 @@ class Main extends Component{
 
     constructor(props){
         super(props);
-        // 相当于ES5 getInitalState
-        let url = 'http://localhost/api/news.json';
+        // 相当于ES5 getInitalState,使用rap的假数据
+        // let url = 'http://rap.taobao.org/mockjsdata/10903/nav.json';
+         let url = 'http://localhost:3000/get/newslist';
         Axios.get(url).then(function(res){
           console.log(res.data); 
         })
         // 第一步
         console.log('执行getInitialState')
-         this.state={
+         this.state = {
           data : []
         }
     }
 
     getData(id){
         let self = this;
-        let url = 'http://localhost:8080/api/news' + id +'.json';
+        // let url = 'http://rap.taobao.org/mockjsdata/10903/newslist.json?colname=' + id;
+        let url = 'http://localhost:3000/get/newslist';
         console.log('请求的url为：' + url);
         Axios.get(url).then(function(res){
           console.log('获取到的数据为：');
