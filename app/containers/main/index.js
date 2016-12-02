@@ -1,47 +1,47 @@
 import React, { Component } from 'react'
-import {NewsList, Loading} from '../../components';
+import {NewsList, Head, Nav, Loading} from '../../components';
 import Axios from'axios'; //引入axios处理ajax
 import Mock from 'mockjs';
 // mock数据
 Mock.mock('http://mockdata/get/newslist', 'get', {
     "data" : [
          {
-          "url": "http://.baidu.com1",
+          "url": "#/detail/01",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://localhost:8080/images/news-img1.jpg",
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "@csentence(16,24)"
         },
         {
-          "url": "http://www.baidu.com2",
+          "url": "#/detail/01",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://localhost:8080/images/news-img2.jpg",
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "@csentence(20,24)"
         },
         {
-          "url": "http://www.baidu.com3",
+          "url": "#/detail/01",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://localhost:8080/images/news-img3.jpg",
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "@csentence(20,24)"
         },
         {
-          "url": "http://www.baidu.com4",
+          "url": "#/detail/01",
           //"imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://localhost:8080/images/news-img4.jpg",
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "@csentence(20,24)"
         },
         {
-          "url": "http://www.baidu.com5",
+          "url": "#/detail/01",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://localhost:8080/images/news-img5.jpg",
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "@csentence(20,24)"
         },
         {
-          "url": "http://www.baidu.com6",
+          "url": "#0/detail/01",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://localhost:8080/images/news-img6.jpg",
           "time" : "@natural(10,60)" + "分钟前",
@@ -57,8 +57,8 @@ Mock.setup({
     timeout: '800'
 })
 
+//首页页面
 class Main extends Component{
-
     constructor(props){
         super(props);
         // 相当于ES5 getInitalState,使用rap的假数据
@@ -69,8 +69,9 @@ class Main extends Component{
         // })
         // 第一步
         console.log('执行getInitialState')
-         this.state = {
-          data : [],
+        this.state = {
+          newslist : [],
+          nav : [],
           loading : true //loading参数
         }
     }
@@ -78,7 +79,7 @@ class Main extends Component{
     getData(id){
         //数据返回之前，重新设置state,因为不同路由使用的一个组件，切换时，需要重置状态
         this.setState({
-          data: [],
+          newslist: [],
           loading:true
         })
 
@@ -90,7 +91,7 @@ class Main extends Component{
           console.log('获取到的数据为：');
           console.log(res.data);
           self.setState({
-            data : res.data.data,
+            newslist : res.data.data,
             loading : false
           })
           
@@ -99,8 +100,15 @@ class Main extends Component{
 
 
     componentDidMount(){
-        // 上面的步骤2，在此初始化数据
         console.log('执行componentDidMount')
+        let url = 'http://localhost:8080/api/nav.json';
+        //let url = 'http://rap.taobao.org/mockjsdata/10903/nav.json';
+        let self = this;
+        Axios.get(url).then(function(res){
+          self.setState({
+            nav:res.data.data
+          })
+        })
         // 初始化数据
         this.getData('tuijian'); 
     }
@@ -120,26 +128,28 @@ class Main extends Component{
             }
             // 否则获取相应栏目数据，根据id查询
             else {
-              console.log("百家-componetWillReceiveProps")
+              console.log("执行-componetWillReceiveProps")
               this.getData(id);
             }
-
         }
      
-      }
+    }
 
      render(){
         return(
           <div>
-            <Loading active={this.state.loading} />
-            <NewsList data={this.state.data} />
+              <Head />
+              <Nav data = {this.state.nav}/>
+              <div>
+                <Loading active={this.state.loading} />
+                <NewsList data={this.state.newslist} />
+              </div>
           </div>
         )
      }
 
 
 }
-
 
 export default  Main
 

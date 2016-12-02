@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Routes from './routes';
 import Rem from '../libs/js/rem';  //处理rem的js
 import './index.css';              //首页css
-// import Axios from'axios'; //引入axios处理ajax
+//app入口文件
 const rootEl = document.getElementById('app');
 
 ReactDOM.render(<Routes />,rootEl);

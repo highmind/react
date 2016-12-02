@@ -1,41 +1,25 @@
 import React, { Component } from 'react'
-import {IcoLink, Head, Nav, NewsList} from '../components';
-import Axios from'axios'; //引入axios处理ajax
+// 主容器
 class App extends Component{
 
     constructor(props){
         super(props);
         // 相当于ES5 getInitalState,使用rap的假数据
-    
         // 第一步
-        console.log('执行getInitialState')
-
+        console.log('主容器app开始执行getInitialState')
         this.state = {
             data:[]
         }
-
     }
 
     componentDidMount(){
-
-        // 上面的步骤2，在此初始化数据
-        console.log('执行componentDidMount')
+        console.log('主容器APP开始执行componentDidMount')
         // 初始化数据
-        let url = 'http://localhost:8080/api/nav.json';
-        //let url = 'http://rap.taobao.org/mockjsdata/10903/nav.json';
-        let self = this;
-        Axios.get(url).then(function(res){
-          self.setState({
-            data:res.data.data
-          })
-        })
     }
 
     render(){
         return(
           <div>
-              <Head />
-              <Nav data = {this.state.data}/>
               {this.props.children}
           </div>
         )
