@@ -121,7 +121,7 @@ var data = Mock.mock({
           "url": "http://www.baidu.com2",
           "imgUrl" : "http://localhost:8080/images/news-img2.jpg",
           "time" : "20分钟前",
-          "title" : "谣言止于智者，乐视芯片被断货消息不实！-百家2"
+          "title" : "谣言止于智者，乐视芯片被断货消息不实！-百家@integer"
         },
         {
           "url": "http://www.baidu.com3",
