@@ -21,7 +21,7 @@ class App extends Component{
         // 上面的步骤2，在此初始化数据
         console.log('执行componentDidMount')
         // 初始化数据
-        let url = 'http://192.168.0.120:8080/api/nav.json';
+        let url = 'http://localhost:8080/api/nav.json';
         //let url = 'http://rap.taobao.org/mockjsdata/10903/nav.json';
         let self = this;
         Axios.get(url).then(function(res){
