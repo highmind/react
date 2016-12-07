@@ -96,12 +96,22 @@ class Main extends Component{
         console.log('Main执行componentDidMount')
         let url = 'http://localhost:8080/api/nav.json';
         let self = this;
-        Axios.get(url).then(function(res){
-          self.setState({
-              nav:res.data.data
-          })
-        })
-        // 初始化数据
+        let NavData = localStorage.getItem('NavData');
+        // 如果导航数据在本地存在，则不请求远程数据
+        if(NavData != null){
+            self.setState({
+                nav:JSON.parse(NavData)
+            })
+        }else{
+            Axios.get(url).then(function(res){
+                self.setState({
+                    nav:res.data.data
+                })
+                localStorage.setItem("NavData", JSON.stringify(res.data.data));
+            })
+        }
+        
+        // 初始化新闻列表数据
         this.getData('tuijian'); 
     }
 
@@ -133,7 +143,7 @@ class Main extends Component{
         return(
           <div>
               <Head name="橙子新闻" type="MainHead"/>
-              <Nav data = {this.state.nav}/>
+              <Nav data={this.state.nav}/>
               <div>
                   <Loading active={this.state.loading} />
                   <NewsList data={this.state.newslist} />
