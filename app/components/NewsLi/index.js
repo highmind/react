@@ -10,25 +10,22 @@ class NewsLi extends React.Component{
         }
     }
 
-   
     render(){
-         
-
         return (
           <div className="news-wrap">
-          <div className="news-img">
-              <a href={this.props.data.url}>
-                  <img width="100%" src={this.props.data.imgUrl} alt="" />
-              </a>
-          </div>
-          <div className="news-con">
-              <h4>
+              <div className="news-img">
                   <a href={this.props.data.url}>
-                      {this.props.data.title}
+                      <img width="100%" src={this.props.data.imgUrl} alt="" />
                   </a>
-              </h4>
-              <p>{this.props.data.time}</p>
-          </div>
+              </div>
+              <div className="news-con">
+                  <h4>
+                      <a href={this.props.data.url}>
+                          {this.props.data.title}
+                      </a>
+                  </h4>
+                  <p>{this.props.data.time}</p>
+              </div>
         </div>
         )
     }

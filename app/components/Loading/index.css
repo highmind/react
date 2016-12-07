@@ -1,3 +1,5 @@
+.loading-wrap{position:absolute;width:100%;height:100%;background-color: #fff;}
+.loading-hide{display: none;}
 .loading{ width: 150px; height: 15px; margin: 0 auto; position: relative; margin-top:10px;} 
 .loading span{ position: absolute; width: 15px; height: 100%;  border-radius: 50%; background: #d43d3d; -webkit-animation: load 1.04s ease-in infinite alternate;} 
 @-webkit-keyframes load{ 

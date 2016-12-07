@@ -6,7 +6,7 @@
 
 // 这边使用 HtmlWebpackPlugin，将 bundle 好的 <script> 插入到 body。${__dirname} 为 ES6 语法对应到 __dirname
 // const webpack = require('webpack');
-//const hotModule = new webpack.HotModuleReplacementPlugin()//热加载插件   
+// const hotModule = new webpack.HotModuleReplacementPlugin()//热加载插件   
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({

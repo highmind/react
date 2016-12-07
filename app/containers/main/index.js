@@ -5,7 +5,7 @@ import Mock from 'mockjs';
 // mock数据
 Mock.mock('http://mockdata/get/newslist', 'get', {
     "data" : [
-         {
+        {
           "url": "#/detail/01",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://localhost:8080/images/news-img1.jpg",
@@ -61,18 +61,12 @@ Mock.setup({
 class Main extends Component{
     constructor(props){
         super(props);
-        // 相当于ES5 getInitalState,使用rap的假数据
-        // let url = 'http://rap.taobao.org/mockjsdata/10903/nav.json';
-        // let url = 'http://mockdata/get/newslist';
-        // Axios.get(url).then(function(res){
-        //   console.log(res.data.data); 
-        // })
-        // 第一步
-        console.log('执行getInitialState')
+        console.log('--------Containers/Main--------')
+        console.log('Main执行getInitialState')
         this.state = {
-          newslist : [],
-          nav : [],
-          loading : true //loading参数
+          newslist : [],   // 新闻列表数据
+          nav : [],        //导航数据
+          loading : true   //loading参数
         }
     }
 
@@ -84,29 +78,27 @@ class Main extends Component{
         })
 
         let self = this;
-        // let url = 'http://rap.taobao.org/mockjsdata/10903/newslist.json?colname=' + id;
         let url = 'http://mockdata/get/newslist';
-        console.log('请求的url为：' + url);
+        console.log('Main请求的url为：' + url);
         Axios.get(url).then(function(res){
-          console.log('获取到的数据为：');
-          console.log(res.data);
-          self.setState({
-            newslist : res.data.data,
-            loading : false
-          })
-          
+            console.log('--------Containers/Main--------')
+            console.log('Main获取到的数据为：');
+            console.log(res.data);
+            self.setState({
+                newslist : res.data.data,
+                loading : false
+            })
         })
     }
 
-
     componentDidMount(){
-        console.log('执行componentDidMount')
+        console.log('--------Containers/Main--------')
+        console.log('Main执行componentDidMount')
         let url = 'http://localhost:8080/api/nav.json';
-        //let url = 'http://rap.taobao.org/mockjsdata/10903/nav.json';
         let self = this;
         Axios.get(url).then(function(res){
           self.setState({
-            nav:res.data.data
+              nav:res.data.data
           })
         })
         // 初始化数据
@@ -116,38 +108,39 @@ class Main extends Component{
     componentDidUpdate(prevProps) {
         // 上面步骤3，通过参数更新数据
         let oldId = prevProps.params.id;
-        console.log('oldId '+ oldId)
+        console.log('--------Containers/Main--------')
+        console.log('Main执行componentDidUpdate');
+        console.log('oldId '+ oldId);
         let id = this.props.params.id;
-        console.log('newId '+ id)
+        console.log('newId '+ id);
         if (id !== oldId){
             // 如果路由获取不到参数，获取推荐数据
             if(typeof(id) == 'undefined'){
-              console.log(111);
-              console.log("id是 " + id + " componetWillReceiveProps")
+              console.log("id是 " + id + " componetWillReceiveProps");
               this.getData('tuijian');
             }
             // 否则获取相应栏目数据，根据id查询
             else {
-              console.log("执行-componetWillReceiveProps")
+              console.log('--------Containers/Main--------')
+              console.log("Main执行componetWillReceiveProps");
               this.getData(id);
             }
         }
      
     }
 
-     render(){
+    render(){
         return(
           <div>
-              <Head />
+              <Head name="橙子新闻" type="MainHead"/>
               <Nav data = {this.state.nav}/>
               <div>
-                <Loading active={this.state.loading} />
-                <NewsList data={this.state.newslist} />
+                  <Loading active={this.state.loading} />
+                  <NewsList data={this.state.newslist} />
               </div>
           </div>
         )
      }
-
 
 }
 
