@@ -7,6 +7,7 @@
 // 这边使用 HtmlWebpackPlugin，将 bundle 好的 <script> 插入到 body。${__dirname} 为 ES6 语法对应到 __dirname
 // const webpack = require('webpack');
 // const hotModule = new webpack.HotModuleReplacementPlugin()//热加载插件   
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -14,12 +15,13 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: 'body',
 });
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin"); //分离css
 module.exports = {
   // 档案起始点从 entry 进入，因为是阵列所以也可以是多个档案
-  entry: [
-    './app/index.js',
-  ],
+  entry: {
+    app: './app/index.js',
+    vendor:['react', 'react-dom',] 
+  },
   // output 是放入产生出来的结果的相关参数
   output: {
     path: `${__dirname}/dist`,
@@ -37,7 +39,7 @@ module.exports = {
           presets: ['es2015', 'react',"stage-0"],
         },
       },
-      {test: /\.css$/, loader: "style!css"},
+      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
       {test: /\.(jpg|png|gif)$/, loader:'url-loader?limit=5000&name=images/[hash:8].[name].[ext]'},
       {test: /\.(ttf|woff|svg|eot)$/, loader: "file-loader?name=fonts/[hash:8].[name].[ext]" }
 
@@ -52,5 +54,29 @@ module.exports = {
     port: 8080,
   },
   // plugins 放置所使用的外挂
-  plugins: [HTMLWebpackPluginConfig,/*hotModule*/ ],
+  plugins: [
+      HTMLWebpackPluginConfig,
+      //chunk插件
+      new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"), 
+      //处理react waring问题 
+      new webpack.DefinePlugin({ 
+        "process.env": { 
+          NODE_ENV: JSON.stringify("production") 
+        }
+      }),
+      // 分离css
+      new ExtractTextPlugin('[name].bundle.css', {
+          allChunks: true
+      }),
+      //混淆js
+      // new webpack.optimize.UglifyJsPlugin({
+      //   mangle: {
+      //     except: ['$super', '$', 'exports', 'require']
+      //     //以上变量‘$super’, ‘$’, ‘exports’ or ‘require’，不会被混淆
+      //   },
+      //   compress: {
+      //     warnings: false
+      //   }
+      // })
+  ],
 };
