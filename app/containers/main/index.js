@@ -46,7 +46,30 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "imgUrl" : "http://localhost:8080/images/news-img6.jpg",
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "@csentence(20,24)"
+        },
+        {
+          "url": "#/detail/07",
+          // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
+          "imgUrl" : "http://localhost:8080/images/news-img1.jpg",
+          "time" : "@natural(10,60)" + "分钟前",
+          "title" : "@csentence(20,24)"
+        },
+        {
+          "url": "#/detail/08",
+          // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
+          "imgUrl" : "http://localhost:8080/images/news-img2.jpg",
+          "time" : "@natural(10,60)" + "分钟前",
+          "title" : "@csentence(20,24)"
+        },
+        {
+          "url": "#/detail/09",
+          // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
+          "imgUrl" : "http://localhost:8080/images/news-img3.jpg",
+          "time" : "@natural(10,60)" + "分钟前",
+          "title" : "@csentence(20,24)"
         }
+
+
 
     ]
 

@@ -14,7 +14,7 @@ class Head extends React.Component{
         switch (type){
             case 'MainHead':
                     return (
-                        <div>
+                        <div className="head">
                             <IcoLink link={"http://www.baidu.com"} icoType={"iconfont icon-user"} linkCls={"user-center-btn"} />
                             <IcoLink link={"http://www.qq.com"} icoType={"iconfont icon-sousuolansousuo"} linkCls={"search-btn"} />
                             <h1 className="title">{this.props.name}</h1>
@@ -23,7 +23,7 @@ class Head extends React.Component{
             break;
             case 'BackHead':
                     return (
-                            <div>
+                            <div className="head head-fixed">
                                 <IcoLink link={"javascript:history.back();"} icoType={"iconfont icon-fanhui"} linkCls={"back-btn"} />
                                 <h1 className="title">{this.props.name}</h1>
                             </div>
@@ -35,7 +35,7 @@ class Head extends React.Component{
     render(){
         let headNodes = this.getNodes(this.props.type);
         return (
-            <div className="head">
+            <div className="head-wrap">
                 {headNodes}
             </div>
         )

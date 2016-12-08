@@ -1,4 +1,5 @@
-.head{position:relative;height:2.5rem;line-height:2.5rem;border-bottom:1px solid #fff;background-color: #d43d3d;color:#fff;}
+.head{position:relative;width:100%;height:2.5rem;line-height:2.5rem;border-bottom:1px solid #fff;background-color: #d43d3d;color:#fff;}
+.head-fixed{position:fixed;}
 .head .title{font-size:0.825rem;text-align:center;font-weight:normal;}
 .head .iconfont{color:#fff;font-size:1rem;}
 .head .search-btn{position:absolute;right:2.8rem;top:0.12rem;}
