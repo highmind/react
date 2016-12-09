@@ -90,5 +90,5 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
 
 // 设置数据延迟时间，模拟loading
 Mock.setup({
-    timeout: '400'
+    timeout: '0'
 })
