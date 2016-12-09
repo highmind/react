@@ -2,29 +2,6 @@ import React, { Component } from 'react'
 import Axios from'axios'; //引入axios处理ajax
 import {Head, Loading} from '../../components';
 import './index.css';
-import Mock from 'mockjs';
-//新闻详情页面
-// mock数据
-Mock.mock('http://mockdata/get/detail', 'get', {
-  "data" : {
-    "title" : "@csentence(16,24)",
-    "author": "@cword(4)",
-    "imgUrls" : [
-        { "url" : "http://localhost:8080/images/detail-img1.jpg"},
-        { "url" : "http://localhost:8080/images/detail-img2.jpg"},
-        { "url" : "http://localhost:8080/images/detail-img3.jpg"}
-    ],
-    "time" : "@time",
-    "content" : "<p>@cparagraph(8)</p><p>@cparagraph(8)</p><p>@cparagraph(8)</p><p>@cparagraph(8)</p>" 
-  }  
-
-})
-
-// 设置数据延迟时间，模拟loading
-Mock.setup({
-    timeout: '800'
-})
-
 class Detail extends Component{
     constructor(props){
         super(props);
