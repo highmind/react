@@ -38,7 +38,7 @@ class Main extends Component{
     componentDidMount(){
         console.log('--------Containers/Main--------')
         console.log('Main执行componentDidMount')
-        let url = 'http://localhost:8080/api/nav.json';
+        let url = 'http://mockdata/get/nav';
         let self = this;
         let NavData = localStorage.getItem('NavData');
         // 如果导航数据在本地存在，则不请求远程数据
@@ -48,6 +48,7 @@ class Main extends Component{
             })
         }else{
             Axios.get(url).then(function(res){
+              console.log(res.data)
                 self.setState({
                     nav:res.data.data
                 })
