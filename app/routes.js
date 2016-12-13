@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Router, Route, IndexRoute, hashHistory, Link, applyRouterMiddleware } from 'react-router';
+import { Router, Route, IndexRoute, Redirect, hashHistory, Link, applyRouterMiddleware } from 'react-router';
 import {App, Main, Detail} from './containers';
 import { useScroll } from 'react-router-scroll';//react-router滚动条位置中间件
 class Routes extends Component{
@@ -15,6 +15,7 @@ class Routes extends Component{
                     <IndexRoute component={Main} /> //首页
                     <Route path="index/:id" component={Main} />  //栏目切换
                     <Route path="detail/:id" component={Detail} /> //详情页
+                    <Redirect from='*' to='/'  />
                  </Route>
             </Router>
         )

@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-let ip = '192.168.0.123';
+let ip = '192.168.0.178';
 // 详情页mock数据
 Mock.mock('http://mockdata/get/detail', 'get', {
   "data" : {
