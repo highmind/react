@@ -9,9 +9,9 @@ class NewsList extends React.Component{
     }
 
     render(){
-        var newsNodes = this.props.data.map(function(detailData, index){
+        var newsNodes = this.props.data.map(function(detailData){
             return(
-                <NewsLi key={index} data={detailData} />
+                <NewsLi key={detailData.id} data={detailData} />
             );
         }); 
         return(

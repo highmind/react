@@ -32,12 +32,23 @@ class Main extends Component{
                 newslist : res.data.data,
                 loading : false
             })
+            // 设置滚动条位置
+            self.setPosition();
         })
+
+    }
+    // 设置滚动条位置
+    setPosition(){
+        let path = this.props.location.pathname;
+        let scrollTop = localStorage.getItem(path) || 0;
+        window.scrollTo(0, scrollTop); 
     }
 
     componentDidMount(){
-        console.log('--------Containers/Main--------')
-        console.log('Main执行componentDidMount')
+
+        console.log('--------Containers/Main--------');
+        console.log('Main执行componentDidMount');
+
         let url = 'http://mockdata/get/nav';
         let self = this;
         let NavData = localStorage.getItem('NavData');
@@ -55,6 +66,7 @@ class Main extends Component{
                 localStorage.setItem("NavData", JSON.stringify(res.data.data));
             })
         }
+
         
         // 初始化新闻列表数据
         this.getData('tuijian'); 

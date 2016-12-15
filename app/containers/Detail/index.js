@@ -44,9 +44,9 @@ class Detail extends Component{
 
     render(){
         // 图片数据为数组，生成图片节点
-        let imgNodes = this.state.imgUrls.map(function(data, index){
+        let imgNodes = this.state.imgUrls.map(function(data){
             return (
-                <img width="100%" src={data.url} key={index} alt="" />
+                <img width="100%" src={data.url} key={data.id} alt="" />
             )
         })
 

@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-let ip = '192.168.0.178';
+let ip = '192.168.0.190';
 // 详情页mock数据
 Mock.mock('http://mockdata/get/detail', 'get', {
   "data" : {
@@ -137,63 +137,72 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://"+ ip +":8080/images/news-img1.jpg",
           "time" : "@natural(10,60)" + "分钟前",
-          "title" : "@csentence(16,24)"
+          "title" : "1@csentence(16,24)",
+          "id" : 0
         },
         {
           "url": "#/detail/02",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://"+ ip +":8080/images/news-img2.jpg",
           "time" : "@natural(10,60)" + "分钟前",
-          "title" : "@csentence(20,24)"
+          "title" : "2@csentence(20,24)",
+          "id" : 1
         },
         {
           "url": "#/detail/03",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://"+ ip +":8080/images/news-img3.jpg",
           "time" : "@natural(10,60)" + "分钟前",
-          "title" : "@csentence(20,24)"
+          "title" : "3@csentence(20,24)",
+          "id" : 2
         },
         {
           "url": "#/detail/04",
           //"imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://"+ ip +":8080/images/news-img4.jpg",
           "time" : "@natural(10,60)" + "分钟前",
-          "title" : "@csentence(20,24)"
+          "title" : "4@csentence(20,24)",
+          "id" : 3
         },
         {
           "url": "#/detail/05",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://"+ ip +":8080/images/news-img5.jpg",
           "time" : "@natural(10,60)" + "分钟前",
-          "title" : "@csentence(20,24)"
+          "title" : "5@csentence(20,24)",
+          "id" : 4
         },
         {
           "url": "#/detail/06",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://"+ ip +":8080/images/news-img6.jpg",
           "time" : "@natural(10,60)" + "分钟前",
-          "title" : "@csentence(20,24)"
+          "title" : "6@csentence(20,24)",
+          "id" : 5
         },
         {
           "url": "#/detail/07",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://"+ ip +":8080/images/news-img1.jpg",
           "time" : "@natural(10,60)" + "分钟前",
-          "title" : "@csentence(20,24)"
+          "title" : "7@csentence(20,24)",
+          "id" : 6
         },
         {
           "url": "#/detail/08",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://"+ ip +":8080/images/news-img2.jpg",
           "time" : "@natural(10,60)" + "分钟前",
-          "title" : "@csentence(20,24)"
+          "title" : "8@csentence(20,24)",
+          "id" : 7
         },
         {
           "url": "#/detail/09",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : "http://"+ ip +":8080/images/news-img3.jpg",
           "time" : "@natural(10,60)" + "分钟前",
-          "title" : "@csentence(20,24)"
+          "title" : "9@csentence(20,24)",
+          "id" : 8
         }
 
 
