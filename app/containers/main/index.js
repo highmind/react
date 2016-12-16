@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {NewsList, Head, Nav, Loading} from '../../components';
+import { ScrollContainer } from 'react-router-scroll';
 import Axios from'axios'; //引入axios处理ajax
 //首页页面
 class Main extends Component{
@@ -33,7 +34,7 @@ class Main extends Component{
                 loading : false
             })
             // 设置滚动条位置
-            self.setPosition();
+            // self.setPosition();
         })
 
     }
@@ -50,9 +51,9 @@ class Main extends Component{
     // }
     // 设置滚动条位置
     setPosition(){
-        let path = this.props.location.pathname;
-        let scrollTop = localStorage.getItem(path) || 0;
-        window.scrollTo(0, scrollTop); 
+        // let path = this.props.location.pathname;
+        // let scrollTop = localStorage.getItem(path) || 0;
+        // window.scrollTo(0, scrollTop); 
     }
 
     componentDidMount(){
@@ -109,14 +110,16 @@ class Main extends Component{
 
     render(){
         return(
-          <div>
-              <Head name="橙子新闻" type="MainHead"/>
-              <Nav data={this.state.nav}/>
+          <ScrollContainer scrollKey={1} >  
               <div>
-                  <Loading active={this.state.loading} />
-                  <NewsList data={this.state.newslist} />
+                  <Head name="橙子新闻" type="MainHead"/>
+                  <Nav data={this.state.nav}/>
+                  <div>
+                      <Loading active={this.state.loading} />
+                      <NewsList data={this.state.newslist} />
+                  </div>
               </div>
-          </div>
+          </ScrollContainer>     
         )
      }
 

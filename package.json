@@ -1,41 +1,40 @@
 {
-  "name": "react-test",
-  "version": "1.0.3",
+  "name": "react",
+  "version": "1.0.4",
+  "description": "",
   "main": "webpack.config.js",
   "dependencies": {
     "axios": "^0.15.3",
-    "babel-loader": "^6.2.7",
-    "babel-preset-react": "^6.16.0",
-    "css-loader": "^0.25.0",
-    "file-loader": "^0.9.0",
-    "react-dom": "^15.3.2",
-    "react": "^15.3.2",
-    "react-router": "^3.0.0",
-    "style-loader": "^0.13.1",
-    "babel-preset-es2015": "^6.18.0",
-    "html-webpack-plugin": "^2.24.1",
-    "babel-preset-stage-0": "^6.16.0",
-    "url-loader": "^0.5.7",
     "babel-core": "^6.18.2",
-    "webpack": "^1.13.3"
-  },
-  "devDependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
     "history": "^3.2.1",
+    "html-webpack-plugin": "^2.24.1",
     "mockjs": "^1.0.1-beta3",
-    "moment": "^2.17.0",
-    "react-redux": "^4.4.6",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
+    "react-router-scroll": "^0.4.1",
+    "style-loader": "^0.13.1",
+    "body-parser": "^1.15.2",
     "redux": "^3.6.0",
-    "webpack-dashboard": "^0.2.0"
+    "webpack": "^1.13.3",
+    "express": "^4.14.0",
+    "react-redux": "^4.4.6",
+    "url-loader": "^0.5.7",
+    "webpack-dashboard": "^0.2.0",
+    "moment": "^2.17.0"
   },
+  "devDependencies": {},
   "scripts": {
-    "build": "webpack -p",
-    "test": "webpack-dev-server  --history-api-fallback"
+    "build" : "webpack -p",
+    "test" : "webpack-dev-server --history-api-fallback"
   },
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }

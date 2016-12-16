@@ -133,76 +133,107 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 Mock.mock('http://mockdata/get/newslist', 'get', {
     "data" : [
         {
-          "url": "#/detail/01",
+          "url": "/detail/01",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
-          "imgUrl" : "http://"+ ip +":8080/images/news-img1.jpg",
+          "imgUrl" : [
+              "http://"+ ip +":8080/images/news-img1.jpg"
+          ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "1@csentence(16,24)",
-          "id" : 0
+          "id" : 0,
+          "displayType" : 1
         },
         {
-          "url": "#/detail/02",
+          "url": "/detail/02",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
-          "imgUrl" : "http://"+ ip +":8080/images/news-img2.jpg",
+           "imgUrl" : [
+              "http://"+ ip +":8080/images/news-img2.jpg"
+          ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "2@csentence(20,24)",
-          "id" : 1
+          "id" : 1,
+          "displayType" : 1
         },
         {
-          "url": "#/detail/03",
+          "url": "/detail/03",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
-          "imgUrl" : "http://"+ ip +":8080/images/news-img3.jpg",
+           "imgUrl" : [
+              "http://"+ ip +":8080/images/news-img1.jpg",
+              "http://"+ ip +":8080/images/news-img2.jpg",
+              "http://"+ ip +":8080/images/news-img3.jpg"
+          ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "3@csentence(20,24)",
-          "id" : 2
+          "id" : 2,
+          "displayType" : 2
         },
         {
-          "url": "#/detail/04",
+          "url": "/detail/04",
           //"imgUrl" : "@image(216x148,@color,#FFF,@word)",
-          "imgUrl" : "http://"+ ip +":8080/images/news-img4.jpg",
+           "imgUrl" : [
+              "http://"+ ip +":8080/images/news-img4.jpg"
+          ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "4@csentence(20,24)",
-          "id" : 3
+          "id" : 3,
+          "displayType" : 1
         },
         {
-          "url": "#/detail/05",
+          "url": "/detail/05",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
-          "imgUrl" : "http://"+ ip +":8080/images/news-img5.jpg",
+          "imgUrl" : [
+              "http://"+ ip +":8080/images/news-img5.jpg",
+              "http://"+ ip +":8080/images/news-img6.jpg",
+              "http://"+ ip +":8080/images/news-img2.jpg"
+          ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "5@csentence(20,24)",
-          "id" : 4
+          "id" : 4,
+          "displayType" : 2
         },
         {
-          "url": "#/detail/06",
+          "url": "/detail/06",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
-          "imgUrl" : "http://"+ ip +":8080/images/news-img6.jpg",
+           "imgUrl" : [
+              "http://"+ ip +":8080/images/news-img6.jpg"
+          ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "6@csentence(20,24)",
-          "id" : 5
+          "id" : 5,
+          "displayType" : 1
         },
         {
-          "url": "#/detail/07",
+          "url": "/detail/07",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
-          "imgUrl" : "http://"+ ip +":8080/images/news-img1.jpg",
+           "imgUrl" : [
+              "http://"+ ip +":8080/images/news-img1.jpg"
+          ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "7@csentence(20,24)",
-          "id" : 6
+          "id" : 6,
+          "displayType" : 1
         },
         {
-          "url": "#/detail/08",
+          "url": "/detail/08",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
-          "imgUrl" : "http://"+ ip +":8080/images/news-img2.jpg",
+           "imgUrl" : [
+             "http://"+ ip +":8080/images/news-img2.jpg"
+          ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "8@csentence(20,24)",
-          "id" : 7
+          "id" : 7,
+          "displayType" : 1
         },
         {
-          "url": "#/detail/09",
+          "url": "/detail/09",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
-          "imgUrl" : "http://"+ ip +":8080/images/news-img3.jpg",
+           "imgUrl" : [
+              "http://"+ ip +":8080/images/news-img3.jpg"
+          ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "9@csentence(20,24)",
-          "id" : 8
+          "id" : 8,
+          "displayType" : 1
         }
 
 
