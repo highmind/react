@@ -37,6 +37,17 @@ class Main extends Component{
         })
 
     }
+    // 性能问题 未解决
+    // shouldComponentUpdate(nextProps, nextState) {
+        // console.log("nextProps")
+        // console.log(this.state !== nextState)
+        // if(this.state === nextState){
+        //   return false
+        // }else{
+        //   return true
+        // }
+        
+    // }
     // 设置滚动条位置
     setPosition(){
         let path = this.props.location.pathname;
