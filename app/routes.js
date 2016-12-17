@@ -29,8 +29,8 @@ class Routes extends Component{
             <Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
                  <Route path="/" component={App}>
                     <IndexRoute component={Main} /> //首页
-                    <Route path="index/:id" component={Main} />  //栏目切换
-                    <Route path="detail/:id" component={Detail} /> //详情页
+                    <Route path="/index/:id" component={Main} />  //栏目切换
+                    <Route path="/detail/:id" component={Detail} /> //详情页
                     <Redirect from='*' to='/'  />
                  </Route>
             </Router>

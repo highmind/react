@@ -44,8 +44,7 @@ class Detail extends Component{
     }
 
     shouldUpdateScroll(){
-        console.log('shouldUpdateScroll')
-        return [0,100];
+        console.log('Detail shouldUpdateScroll')
     }
 
     render(){

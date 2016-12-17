@@ -108,9 +108,14 @@ class Main extends Component{
      
     }
 
+    shouldUpdateScroll(){
+      console.log("Main shouldUpdateScroll");
+      // return true
+    }
+
     render(){
         return(
-          <ScrollContainer scrollKey={1} >  
+          <ScrollContainer scrollKey={1} shouldUpdateScroll={this.shouldUpdateScroll} >  
               <div>
                   <Head name="橙子新闻" type="MainHead"/>
                   <Nav data={this.state.nav}/>
