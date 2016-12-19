@@ -17,7 +17,7 @@ class Nav extends React.Component{
     // 从localStorage中获取导航展开和关闭状态
     getDataFromLocal(){
         let navShowMore = localStorage.getItem('NavShowMore');
-        return (navShowMore != null) ? this.strToBool(navShowMore) : false
+        return (navShowMore != null) ? this.strToBool(navShowMore) : false;
     }
 
     // "true" 和 false字符串转布尔

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {NewsList, Head, Nav, Loading} from '../../components';
 import Axios from'axios'; //引入axios处理ajax
-import { ScrollContainer } from 'react-router-scroll';
 //首页页面
 class Main extends Component{
     constructor(props){

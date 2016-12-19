@@ -6,7 +6,7 @@ class Head extends React.Component{
     constructor(props){
         super(props);
         // 相当于ES5 getInitalState
-        this.state={}
+        this.state={};
     }
     
     getNodes(type){

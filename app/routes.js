@@ -3,28 +3,30 @@ import { Router, Route, IndexRoute, Redirect, hashHistory,browserHistory, applyR
 import {App, Main, Detail} from './containers';
 
 const savePosition = router => {
-     console.log('routes savePosition')
-        let scrollTop = document.body.scrollTop
-        console.log(router)
-        let path = router.location.pathname
-        if (path) {
-            if (scrollTop) localStorage.setItem(path, scrollTop)
-            if (localStorage.getItem(path) && !scrollTop) localStorage.removeItem(path)
+    console.log('routes savePosition');
+    let scrollTop = document.body.scrollTop;
+    console.log(router);
+    let path = router.location.pathname;
+    if(path){
+        if(scrollTop){
+            localStorage.setItem(path, scrollTop);
         }
+        if(localStorage.getItem(path) && !scrollTop){
+            localStorage.removeItem(path);
+        }
+    }
 }
 
 const goScrollTop = () => {
-    console.log('goTop.....')
-    window.scrollTo(0, 0)
+    console.log('goTop.....');
+    window.scrollTo(0, 0);
 }
-  
-
 
 export default (
     <Route path="/" component={App}>
         <IndexRoute component={Main} onLeave={savePosition} /> //首页
         <Route path="/index/:id" component={Main} onLeave={savePosition} />  //栏目切换
         <Route path="/detail/:id" component={Detail} onEnter={goScrollTop} /> //详情页
-        <Redirect from='*' to='/'  />
+        <Redirect from='*' to='/' />
     </Route>
 )
