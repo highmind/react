@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {NewsList, Head, Nav, Loading} from '../../components';
-import { ScrollContainer } from 'react-router-scroll';
 import Axios from'axios'; //引入axios处理ajax
 //首页页面
 class Main extends Component{
@@ -34,7 +33,7 @@ class Main extends Component{
                 loading : false
             })
             // 设置滚动条位置
-            // self.setPosition();
+            self.setPosition();
         })
 
     }
@@ -51,9 +50,9 @@ class Main extends Component{
     // }
     // 设置滚动条位置
     setPosition(){
-        // let path = this.props.location.pathname;
-        // let scrollTop = localStorage.getItem(path) || 0;
-        // window.scrollTo(0, scrollTop); 
+        let path = this.props.location.pathname;
+        let scrollTop = localStorage.getItem(path) || 0;
+        window.scrollTo(0, scrollTop); 
     }
 
     componentDidMount(){
@@ -79,7 +78,6 @@ class Main extends Component{
             })
         }
 
-        
         // 初始化新闻列表数据
         this.getData('tuijian'); 
     }
@@ -101,21 +99,15 @@ class Main extends Component{
             // 否则获取相应栏目数据，根据id查询
             else {
               console.log('--------Containers/Main--------')
-              console.log("Main执行componetWillReceiveProps");
+              console.log("Main执行componentDidUpdate");
               this.getData(id);
             }
         }
      
     }
 
-    shouldUpdateScroll(){
-      console.log("Main shouldUpdateScroll");
-      // return true
-    }
-
     render(){
-        return(
-          <ScrollContainer scrollKey={1} shouldUpdateScroll={this.shouldUpdateScroll} >  
+        return( 
               <div>
                   <Head name="橙子新闻" type="MainHead"/>
                   <Nav data={this.state.nav}/>
@@ -124,11 +116,9 @@ class Main extends Component{
                       <NewsList data={this.state.newslist} />
                   </div>
               </div>
-          </ScrollContainer>     
         )
      }
 
-}
-
+}    
 export default  Main
 

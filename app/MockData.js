@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-let ip = '192.168.0.112';
+let ip = '192.168.0.190';
 // 详情页mock数据
 Mock.mock('http://mockdata/get/detail', 'get', {
   "data" : {
@@ -133,7 +133,7 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 Mock.mock('http://mockdata/get/newslist', 'get', {
     "data" : [
         {
-          "url": "/detail/01",
+          "url": "#/detail/01",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : [
               "http://"+ ip +":8080/images/news-img1.jpg"
@@ -144,7 +144,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "displayType" : 1
         },
         {
-          "url": "/detail/02",
+          "url": "#/detail/02",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
               "http://"+ ip +":8080/images/news-img2.jpg"
@@ -155,7 +155,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "displayType" : 1
         },
         {
-          "url": "/detail/03",
+          "url": "#/detail/03",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
               "http://"+ ip +":8080/images/news-img1.jpg",
@@ -168,7 +168,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "displayType" : 2
         },
         {
-          "url": "/detail/04",
+          "url": "#/detail/04",
           //"imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
               "http://"+ ip +":8080/images/news-img4.jpg"
@@ -179,7 +179,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "displayType" : 1
         },
         {
-          "url": "/detail/05",
+          "url": "#/detail/05",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : [
               "http://"+ ip +":8080/images/news-img5.jpg",
@@ -192,7 +192,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "displayType" : 2
         },
         {
-          "url": "/detail/06",
+          "url": "#/detail/06",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
               "http://"+ ip +":8080/images/news-img6.jpg"
@@ -203,7 +203,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "displayType" : 1
         },
         {
-          "url": "/detail/07",
+          "url": "#/detail/07",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
               "http://"+ ip +":8080/images/news-img1.jpg"
@@ -214,7 +214,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "displayType" : 1
         },
         {
-          "url": "/detail/08",
+          "url": "#/detail/08",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
              "http://"+ ip +":8080/images/news-img2.jpg"
@@ -225,7 +225,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "displayType" : 1
         },
         {
-          "url": "/detail/09",
+          "url": "#/detail/09",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
               "http://"+ ip +":8080/images/news-img3.jpg"

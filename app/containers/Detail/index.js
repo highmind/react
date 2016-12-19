@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Axios from'axios'; //引入axios处理ajax
 import {Head, Loading} from '../../components';
-import { ScrollContainer } from 'react-router-scroll';
 import './index.css';
 class Detail extends Component{
     constructor(props){
@@ -43,9 +42,6 @@ class Detail extends Component{
         this.getData(id); 
     }
 
-    shouldUpdateScroll(){
-        console.log('Detail shouldUpdateScroll')
-    }
 
     render(){
         // 图片数据为数组，生成图片节点
@@ -56,7 +52,7 @@ class Detail extends Component{
         })
 
         return(
-          <ScrollContainer scrollKey={2} shouldUpdateScroll={this.shouldUpdateScroll}>  
+          
             <div className="detail-wrap"> 
                 <Head name="橙子新闻" type="BackHead" />
                 <Loading active={this.state.loading} />
@@ -70,11 +66,12 @@ class Detail extends Component{
                     <div className="detail-text" dangerouslySetInnerHTML={{__html:this.state.data.content}}></div>
                 </div>
             </div>
-          </ScrollContainer>  
+         
         )
     }
 
 }
-
+// <ScrollContainer scrollKey={2} shouldUpdateScroll={this.shouldUpdateScroll}>
+//  </ScrollContainer>    
 export default  Detail
 
