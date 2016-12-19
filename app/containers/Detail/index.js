@@ -70,8 +70,6 @@ class Detail extends Component{
         )
     }
 
-}
-// <ScrollContainer scrollKey={2} shouldUpdateScroll={this.shouldUpdateScroll}>
-//  </ScrollContainer>    
+}   
 export default  Detail
 

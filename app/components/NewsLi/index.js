@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
+
 import './index.css';
 
 class NewsLi extends React.Component{
@@ -28,15 +30,16 @@ class NewsLi extends React.Component{
           return(
             <div className="news-wrap">
                 <div className="news-img">
-                    <a href={this.props.data.url}>
+                   
+                    <Link to={this.props.data.url}>
                         {imgNodes}
-                    </a>
+                    </Link>
                 </div>
                 <div className="news-con">
                     <h4>
-                        <a href={this.props.data.url}>
+                        <Link to={this.props.data.url}>
                             {this.props.data.title}
-                        </a>
+                        </Link>
                     </h4>
                     <p className="time-bar">{this.props.data.time}</p>
                 </div>
@@ -49,15 +52,17 @@ class NewsLi extends React.Component{
               <div className="news-wrap2">
                   <div className="news-con2">
                       <h4>
-                          <a href={this.props.data.url}>
+                          <Link to={this.props.data.url}>
                               {this.props.data.title}
-                          </a>
+                          </Link>
                       </h4>
                   </div>
                   <div className="news-img2">
-                      <a className="img-wrap" href={this.props.data.url}>
+                      
+                      <Link className="img-wrap" to={this.props.data.url}>
                           {imgNodes}
-                      </a>
+                      </Link>
+     
                   </div>
                   <p className="time-bar">{this.props.data.time}</p>
                   
