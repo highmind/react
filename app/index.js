@@ -7,5 +7,6 @@ import './index.css';
 import './MockData';
 //app入口文件
 const rootEl = document.getElementById('app');
-ReactDOM.render(<Router history={browserHistory} routes={Routes}></Router>,rootEl);
+ReactDOM.render(
+    <Router history={browserHistory} routes={Routes}></Router>,rootEl);
 
