@@ -17,6 +17,7 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 const ExtractTextPlugin = require("extract-text-webpack-plugin"); //分离css
 module.exports = {
+   devtool: 'inline-source-map',  //配置sourcemap，方便错误调试
   // 档案起始点从 entry 进入，因为是阵列所以也可以是多个档案
   entry: {
     app: './app/index.js',

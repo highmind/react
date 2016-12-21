@@ -40,7 +40,7 @@ class Nav extends React.Component{
     }
    
     render(){
-         let defaultNum = this.props.defaultNum || 11; 
+         let defaultNum = this.props.defaultNum || 13; 
          let active = this.state.active;
          // console.log(this.props.data)
          // 当导航链接超过一定数量，隐藏超出的链接
@@ -67,10 +67,14 @@ class Nav extends React.Component{
         })
 
         return (
-            <div className="news-nav">
+          <div className="news-nav">
+            <div className="news-nav-top">
                 {navNodes}
-                <IcoLink link={"javascript:void(0)"}  clickEvent={this.toggleDown.bind(this)} icoType={"iconfont icon-jia"} linkCls={"news-more"}  />
             </div>
+            <div className="news-nav-bottom" onClick={this.toggleDown.bind(this)}>
+                  <IcoLink link={"javascript:void(0)"}  icoType={'iconfont icon-iconfontarrows'} linkCls={this.state.active ? 'news-more arrowActive' : 'news-more'} />
+            </div>
+          </div>      
         )
     }
 
