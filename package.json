@@ -29,6 +29,7 @@
     "moment": "^2.17.0"
   },
   "devDependencies": {
+    "antd-mobile": "^0.9.12",
     "history": "^3.2.1",
     "nuka-carousel": "^2.0.3",
     "react-fastclick": "^2.1.2",

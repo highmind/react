@@ -8,3 +8,6 @@ html{font-size:20px;}
 html, body {
   -webkit-tap-highlight-color: transparent;
 }
+
+.con-hide{display: none;}
+.con-show{display: block;}

@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-let ip = '192.168.0.193';
+let ip = '192.168.0.198';
 // 详情页mock数据
 Mock.mock('http://mockdata/get/detail', 'get', {
   "data" : {
@@ -242,8 +242,29 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 
 // })
 
-//新闻列表mock数据 browserHistory
+//新闻列表mock数据 包含slider数据 browserHistory
 Mock.mock('http://mockdata/get/newslist', 'get', {
+    "slider" :{ 
+      "id" : "@id",
+      "data":[
+        {
+          "url" : "/detail/01",
+          "imgUrl" :  "http://"+ ip +":8080/images/timg@natural(1, 3).jpg",
+          "id":"@id"
+        },
+        {
+          "url" : "/detail/02",
+          "imgUrl" :  "http://"+ ip +":8080/images/timg@natural(1, 3).jpg",
+           "id":"@id"
+        },
+        {
+          "url" : "/detail/03",
+          "imgUrl" :  "http://"+ ip +":8080/images/timg@natural(1, 3).jpg",
+           "id":"@id"
+        }
+      ]
+    },
+
     "data" : [
         {
           "url": "/detail/01",
@@ -253,7 +274,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "1@csentence(16,24)",
-          "id" : 0,
+          "id" : "@id",
           "displayType" : 1
         },
         {
@@ -264,7 +285,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "2@csentence(20,24)",
-          "id" : 1,
+          "id" : "@id",
           "displayType" : 1
         },
         {
@@ -277,7 +298,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "3@csentence(20,24)",
-          "id" : 2,
+          "id" : "@id",
           "displayType" : 2
         },
         {
@@ -288,7 +309,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "4@csentence(20,24)",
-          "id" : 3,
+          "id" : "@id",
           "displayType" : 1
         },
         {
@@ -301,7 +322,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "5@csentence(20,24)",
-          "id" : 4,
+          "id" : "@id",
           "displayType" : 2
         },
         {
@@ -312,7 +333,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "6@csentence(20,24)",
-          "id" : 5,
+          "id" : "@id",
           "displayType" : 1
         },
         {
@@ -323,7 +344,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "7@csentence(20,24)",
-          "id" : 6,
+          "id" : "@id",
           "displayType" : 1
         },
         {
@@ -334,7 +355,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "8@csentence(20,24)",
-          "id" : 7,
+          "id" : "@id",
           "displayType" : 1
         },
         {
@@ -345,7 +366,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "9@csentence(20,24)",
-          "id" : 8,
+          "id" : "@id",
           "displayType" : 1
         }
 
@@ -357,5 +378,5 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
 
 // 设置数据延迟时间，模拟loading
 Mock.setup({
-    timeout: '0'
+    timeout: '300'
 })
