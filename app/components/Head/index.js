@@ -10,7 +10,8 @@ class Head extends React.Component{
     }
     
     getNodes(type){
-
+        console.log('Head ...')
+        console.log(this.props)
         switch (type){
             case 'MainHead':
                     return (

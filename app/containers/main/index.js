@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {NewsList, Head, Nav, Slider, Loading} from '../../components';
 import Axios from'axios'; //引入axios处理ajax
+
 //首页页面
 class Main extends Component{
     constructor(props){
@@ -9,10 +10,10 @@ class Main extends Component{
         console.log('Main执行getInitialState')
         this.ignoreLastFetch = false;
         this.state = {
-          newslist : [],   // 新闻列表数据
+          newslist : [],   //新闻列表数据
           nav : [],        //导航数据
           slider : [],     //轮播图数据
-          sliderId : 0,
+          sliderId : 0,    //轮播图组件id
           loading : true   //loading参数
         }
     }
@@ -45,12 +46,30 @@ class Main extends Component{
         })
 
     }
-    
+
+    // 
+    // const savePosition = router => {
+    //     console.log('routes savePosition');
+    //     let scrollTop = document.body.scrollTop;
+    //     console.log(router);
+    //     let path = router.location.pathname;
+    //     if(path){
+    //         if(scrollTop){
+    //             localStorage.setItem(path, scrollTop);
+    //         }
+    //         if(localStorage.getItem(path) && !scrollTop){
+    //             localStorage.removeItem(path);
+    //         }
+    //
+    //
+    //     }
+    // }
+
     // 设置滚动条位置
     setPosition(){
         let path = this.props.location.pathname;
         let scrollTop = localStorage.getItem(path) || 0;
-        window.scrollTo(0, scrollTop); 
+        window.scrollTo(0, scrollTop);
     }
 
     componentDidMount(){
@@ -76,7 +95,7 @@ class Main extends Component{
         }
 
         // 初始化新闻列表数据
-        this.getData('tuijian'); 
+        this.getData('tuijian');
     }
 
     componentDidUpdate(prevProps) {
@@ -100,7 +119,7 @@ class Main extends Component{
               this.getData(id);
             }
         }
-     
+
     }
 
     componentWillUnmount () {
@@ -109,7 +128,7 @@ class Main extends Component{
     }
 
     render(){
-        return( 
+        return(
               <div>
                   <Head name="橙子新闻" type="MainHead"/>
                   <Nav data={this.state.nav}/>
@@ -124,6 +143,7 @@ class Main extends Component{
         )
     }
 
-}    
-export default  Main
+}
 
+
+export default  Main

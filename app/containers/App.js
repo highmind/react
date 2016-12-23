@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import {bindActionCreators} from 'redux'
+import * as actionCreators from '../actions/actions'
+import {connect} from 'react-redux'; 
 // 主容器
 class App extends Component{
     constructor(props){
@@ -20,12 +23,24 @@ class App extends Component{
     render(){
         return(
           <div>
-              {this.props.children}
+              {React.cloneElement(this.props.children, this.props)}
           </div>
         )
     }
 
 }
 
-export default  App
+// <div>
+//               {this.props.children}
+//           </div>
+function mapStateToProps(state){
+    return {todolist : state.todolist}
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators(actionCreators, dispatch);
+}
+
+export default  connect(mapStateToProps, mapDispatchToProps)(App)
+
 

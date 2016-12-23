@@ -3,31 +3,24 @@
  */
 
 export const ADD_TODO = 'ADD_TODO';
-export const TOGGLE_TODO = 'TOGGLE_TODO'
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
-
-/*
- * 其它的常量
- */
-
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
-}
+export const DELETE_TODO = 'DELETE_TODO';
+export const SCROLL_POSITION = 'SCROLL_POSITION'; //滚动条位置
 
 /*
  * action 创建函数
  */
 
 export function addTodo(text) {
+  console.log('addTodo action创建函数');
   return { type: ADD_TODO, text }
 }
 
-export function toggleTodo(index) {
-  return { type: TOGGLE_TODO, index }
+export function deleteToDo(index){
+    console.log('deleteToDo action创建函数');
+    return {type: DELETE_TODO, index}
 }
 
-export function setVisibilityFilter(filter) {
-  return { type: SET_VISIBILITY_FILTER, filter }
+export function scrollPosition(number){
+  console.log('scrollPosition action 创建函数');
+  return {type: SCROLL_POSITION, number}
 }
