@@ -57,7 +57,8 @@ function setScroll(state = [], action){
 
 const rootReducer = combineReducers({
   todos,
-  test
+  test,
+  setScroll
 })
 
 

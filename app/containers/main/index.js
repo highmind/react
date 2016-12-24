@@ -47,7 +47,7 @@ class Main extends Component{
 
     }
 
-    // 
+    //
     // const savePosition = router => {
     //     console.log('routes savePosition');
     //     let scrollTop = document.body.scrollTop;
@@ -67,9 +67,9 @@ class Main extends Component{
 
     // 设置滚动条位置
     setPosition(){
-        let path = this.props.location.pathname;
-        let scrollTop = localStorage.getItem(path) || 0;
-        window.scrollTo(0, scrollTop);
+        // let path = this.props.location.pathname;
+        // let scrollTop = localStorage.getItem(path) || 0;
+        // window.scrollTo(0, scrollTop);
     }
 
     componentDidMount(){
@@ -128,6 +128,9 @@ class Main extends Component{
     }
 
     render(){
+        let { state, actions } = this.props;
+        console.log(this.props)
+
         return(
               <div>
                   <Head name="橙子新闻" type="MainHead"/>

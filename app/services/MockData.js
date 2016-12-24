@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-let ip = '192.168.0.199';
+let ip = '192.168.0.209';
 // 详情页mock数据
 Mock.mock('http://mockdata/get/detail', 'get', {
   "data" : {
@@ -11,8 +11,8 @@ Mock.mock('http://mockdata/get/detail', 'get', {
         { "url" : "http://"+ ip +":8080/images/detail-img3.jpg"}
     ],
     "time" : "@time",
-    "content" : "<p>@cparagraph(8)</p><p>@cparagraph(8)</p><p>@cparagraph(8)</p><p>@cparagraph(8)</p>" 
-  }  
+    "content" : "<p>@cparagraph(8)</p><p>@cparagraph(8)</p><p>@cparagraph(8)</p><p>@cparagraph(8)</p>"
+  }
 
 })
 
@@ -244,7 +244,7 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 
 //新闻列表mock数据 包含slider数据 browserHistory
 Mock.mock('http://mockdata/get/newslist', 'get', {
-    "slider" :{ 
+    "slider" :{
       "id" : "@id",
       "data":[
         {
