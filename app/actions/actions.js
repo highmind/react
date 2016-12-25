@@ -20,7 +20,7 @@ export function deleteToDo(index){
     return {type: DELETE_TODO, index}
 }
 
-export function scrollPosition(number){
+export function setPosition(positionData){
   console.log('scrollPosition action 创建函数');
-  return {type: SCROLL_POSITION, number}
+  return {type: SCROLL_POSITION, positionData}
 }

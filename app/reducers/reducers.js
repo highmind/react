@@ -8,8 +8,7 @@ function todos(state = [], action) {
       return [
         ...state,
         {
-          text: action.text,
-          completed: false
+          text: action.text
         }
       ]
 
@@ -27,8 +26,7 @@ function test(state = [], action) {
       return [
         ...state,
         {
-          text: action.index,
-          completed: false
+          text: action.index
         }
       ]
 
@@ -45,7 +43,7 @@ function setScroll(state = [], action){
       return [
         ...state,
         {
-          number:action.number
+          position:action.positionData
         }
       ]
 

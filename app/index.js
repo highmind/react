@@ -8,7 +8,6 @@ import configureStore from './store/store';
 import './index.css';
 import './services/MockData';
 const store = configureStore();
-console.log(store.getState());
 
 //app入口文件
 const rootEl = document.getElementById('app');

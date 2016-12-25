@@ -47,29 +47,34 @@ class Main extends Component{
 
     }
 
-    //
-    // const savePosition = router => {
-    //     console.log('routes savePosition');
-    //     let scrollTop = document.body.scrollTop;
-    //     console.log(router);
-    //     let path = router.location.pathname;
-    //     if(path){
-    //         if(scrollTop){
-    //             localStorage.setItem(path, scrollTop);
-    //         }
-    //         if(localStorage.getItem(path) && !scrollTop){
-    //             localStorage.removeItem(path);
-    //         }
-    //
-    //
-    //     }
-    // }
+
+    savePosition() {
+        console.log('routes savePosition');
+        let scrollTop = document.body.scrollTop;
+        // console.log(router);
+        // let path = router.location.pathname;
+        //通过action设置store
+        let positionData = {"scrollTop" : scrollTop, "path" : this.props.location.pathname}
+         this.props.setPosition(positionData)
+         console.log(positionData)
+        // if(path){
+        //     if(scrollTop){
+        //         localStorage.setItem(path, scrollTop);
+        //     }
+        //     if(localStorage.getItem(path) && !scrollTop){
+        //         localStorage.removeItem(path);
+        //     }
+        // }
+    }
 
     // 设置滚动条位置
     setPosition(){
+        console.log(this.props)
+        // let positionData = this.props.position;
+        // console.log(positionData)
         // let path = this.props.location.pathname;
         // let scrollTop = localStorage.getItem(path) || 0;
-        // window.scrollTo(0, scrollTop);
+         //window.scrollTo( positionData.scrollTop);
     }
 
     componentDidMount(){
@@ -125,12 +130,12 @@ class Main extends Component{
     componentWillUnmount () {
         // 上面步骤四，在组件移除前忽略正在进行中的请求
         this.ignoreLastFetch = true
+        this.savePosition()
+
     }
 
     render(){
-        let { state, actions } = this.props;
         console.log(this.props)
-
         return(
               <div>
                   <Head name="橙子新闻" type="MainHead"/>
