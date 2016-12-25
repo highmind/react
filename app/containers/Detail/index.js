@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Axios from'axios'; //引入axios处理ajax
+import Axios from 'axios'; //引入axios处理ajax
 import {Head, Loading} from '../../components';
 import './index.css';
 class Detail extends Component{
@@ -29,7 +29,7 @@ class Detail extends Component{
                 data : resData.data,
                 imgUrls : resData.data.imgUrls,
                 loading : false
-            }) 
+            })
         })
     }
 
@@ -39,7 +39,7 @@ class Detail extends Component{
         // 初始化数据
         let id = this.props.params.id;
         console.log('详情页获取到的传值id: '+ id)
-        this.getData(id); 
+        this.getData(id);
     }
 
 
@@ -52,24 +52,23 @@ class Detail extends Component{
         })
 
         return(
-          
-            <div className="detail-wrap"> 
+
+            <div className="detail-wrap">
                 <Head name="橙子新闻" type="BackHead" />
                 <Loading active={this.state.loading} />
                 <div className="detail-con">
                     <h4 className="detail-title">{this.state.data.title}</h4>
                     <div className="detail-bar">
                         <span className="detail-author">{this.state.data.author}</span>
-                        &nbsp;<span className="detail-time">{this.state.data.time}</span> 
+                        &nbsp;<span className="detail-time">{this.state.data.time}</span>
                     </div>
                     {imgNodes}
                     <div className="detail-text" dangerouslySetInnerHTML={{__html:this.state.data.content}}></div>
                 </div>
             </div>
-         
+
         )
     }
 
-}   
+}
 export default  Detail;
-
