@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {NewsList, Head, Nav, Slider, Loading} from '../../components';
-import Axios from'axios'; //引入axios处理ajax
+import Axios from 'axios'; //引入axios处理ajax
 
 //首页页面
 class Main extends Component{
