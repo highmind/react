@@ -8,7 +8,7 @@ class Head extends React.Component{
         // 相当于ES5 getInitalState
         this.state={};
     }
-    
+
     getNodes(type){
         console.log('Head ...')
         console.log(this.props)

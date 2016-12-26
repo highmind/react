@@ -28,7 +28,7 @@ class Main extends Component{
         let url = 'http://mockdata/get/newslist';
         console.log('Main请求的url为：' + url);
         Axios.get(url).then(function(res){
-            console.log('--------Containers/Main--------')
+            console.log('--------Containers/Main--------');
             console.log('Main获取到的数据为：');
             console.log(res.data.slider);
             if(!self.ignoreLastFetch){
@@ -49,38 +49,46 @@ class Main extends Component{
 
 
     savePosition() {
-        console.log('routes savePosition');
-        let scrollTop = document.body.scrollTop;
-        // console.log(router);
-        // let path = router.location.pathname;
-        //通过action设置store
-        let positionData = {"scrollTop" : scrollTop, "path" : this.props.location.pathname}
-         this.props.setPosition(positionData)
-         console.log(positionData)
-        // if(path){
-        //     if(scrollTop){
-        //         localStorage.setItem(path, scrollTop);
-        //     }
-        //     if(localStorage.getItem(path) && !scrollTop){
-        //         localStorage.removeItem(path);
-        //     }
-        // }
+        console.log('...savePosition...');
+        let scrollTop = document.body.scrollTop;//获取滚动条高度
+        let path = this.props.location.pathname;//获取当前的pathname
+        let positionData = {"scrollTop" : scrollTop, "path" : this.props.location.pathname};//redux中要存储的数据
+
+        this.props.addTodo('this is addTodo' + scrollTop); //测试addTodo
+
+        this.props.setScroll(positionData);//通过action设置位置信息
     }
 
     // 设置滚动条位置
     setPosition(){
-        console.log(this.props)
-        // let positionData = this.props.position;
-        // console.log(positionData)
-        // let path = this.props.location.pathname;
-        // let scrollTop = localStorage.getItem(path) || 0;
-         //window.scrollTo( positionData.scrollTop);
+        console.log('...setPosition...');
+        let posData = this.props.position;//获取store中的滚动条位置信息
+        let len = posData.length;         //获取信息数组长度，用于获取最新的位置信息
+        console.log(posData);
+        let savePos = 0;                  //初始位置为0
+        let savePath = '';                //初始pathname为空
+        if(len != 0 ){                    //当位置信息数组不为空的时候，设置位置和pathname
+            savePos = posData[len - 1].position.scrollTop;
+            savePath = posData[len - 1].position.path;
+            console.log(savePos);
+            console.log(savePath);
+        }
+
+        let path = this.props.location.pathname; //获取当前pathname
+        if(path == savePath){                    //当store中路径和当前路径一致时，
+          window.scrollTo(0, savePos);           //设置滚动条位置到 相应位置
+          let positionData = {"scrollTop" : 0, "path" : this.props.location.pathname};
+          this.props.setScroll(positionData);    //设置store中当前path为0，解决导航栏目切换时，滚动条位置
+        }
+        else{                                   //否则滚动到顶部
+          window.scrollTo(0, 0);
+        }
+
     }
 
     componentDidMount(){
         console.log('--------Containers/Main--------');
         console.log('Main执行componentDidMount');
-
         let url = 'http://mockdata/get/nav';
         let self = this;
         let NavData = localStorage.getItem('NavData');
@@ -106,11 +114,11 @@ class Main extends Component{
     componentDidUpdate(prevProps) {
         // 上面步骤3，通过参数更新数据
         let oldId = prevProps.params.id;
-        console.log('--------Containers/Main--------')
+        console.log('--------Containers/Main--------');
         console.log('Main执行componentDidUpdate');
-        console.log('oldId '+ oldId);
+        console.log('oldId ' + oldId);
         let id = this.props.params.id;
-        console.log('newId '+ id);
+        console.log('newId ' + id);
         if (id !== oldId){
             // 如果路由获取不到参数，获取推荐数据
             if(typeof(id) == 'undefined'){
@@ -135,7 +143,6 @@ class Main extends Component{
     }
 
     render(){
-        console.log(this.props)
         return(
               <div>
                   <Head name="橙子新闻" type="MainHead"/>

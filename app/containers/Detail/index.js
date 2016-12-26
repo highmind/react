@@ -31,6 +31,7 @@ class Detail extends Component{
                 loading : false
             })
         })
+        window.scrollTo(0, 0);
     }
 
     componentDidMount(){
@@ -56,14 +57,16 @@ class Detail extends Component{
             <div className="detail-wrap">
                 <Head name="橙子新闻" type="BackHead" />
                 <Loading active={this.state.loading} />
-                <div className="detail-con">
-                    <h4 className="detail-title">{this.state.data.title}</h4>
-                    <div className="detail-bar">
-                        <span className="detail-author">{this.state.data.author}</span>
-                        &nbsp;<span className="detail-time">{this.state.data.time}</span>
+                <div className={this.state.loading ? "con-hide" : "con-show"}>
+                    <div className="detail-con">
+                        <h4 className="detail-title">{this.state.data.title}</h4>
+                        <div className="detail-bar">
+                            <span className="detail-author">{this.state.data.author}</span>
+                            &nbsp;<span className="detail-time">{this.state.data.time}</span>
+                        </div>
+                        {imgNodes}
+                        <div className="detail-text" dangerouslySetInnerHTML={{__html:this.state.data.content}}></div>
                     </div>
-                    {imgNodes}
-                    <div className="detail-text" dangerouslySetInnerHTML={{__html:this.state.data.content}}></div>
                 </div>
             </div>
 

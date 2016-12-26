@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {bindActionCreators} from 'redux'
 import * as actionCreators from '../actions/actions'
-import {connect} from 'react-redux'; 
+import {connect} from 'react-redux';
 // 主容器
 class App extends Component{
     constructor(props){
@@ -34,7 +34,7 @@ class App extends Component{
 //               {this.props.children}
 //           </div>
 function mapStateToProps(state){
-    return {todolist : state.todolist}
+    return { position: state.setScroll,todoList : state.todos}
 }
 
 function mapDispatchToProps(dispatch){
@@ -42,5 +42,3 @@ function mapDispatchToProps(dispatch){
 }
 
 export default  connect(mapStateToProps, mapDispatchToProps)(App)
-
-
