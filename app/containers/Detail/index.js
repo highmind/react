@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'; //引入axios处理ajax
-import {Head, Loading} from '../../components';
+import {Head, Loading, NewsListView} from '../../components';
 import './index.css';
 class Detail extends Component{
     constructor(props){
@@ -56,6 +56,7 @@ class Detail extends Component{
 
             <div className="detail-wrap">
                 <Head name="橙子新闻" type="BackHead" />
+                <NewsListView />
                 <Loading active={this.state.loading} />
                 <div className={this.state.loading ? "con-hide" : "con-show"}>
                     <div className="detail-con">

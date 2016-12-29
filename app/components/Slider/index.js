@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router';
-import Carousel from 'nuka-carousel';
-// import { ListView } from 'antd-mobile';
+// import Carousel from 'nuka-carousel';
+import { Carousel  } from 'antd-mobile';
 import './index.css';
 //配置按钮和dots的显示和隐藏
-const noDots = Carousel.getDefaultProps().decorators.slice(2, 3);
-console.log(Carousel.getDefaultProps())
+// const noDots = Carousel.getDefaultProps().decorators.slice(2, 3);
+// console.log(Carousel.getDefaultProps())
 class Slider extends React.Component{
     constructor(props){
         super(props);
@@ -14,11 +14,11 @@ class Slider extends React.Component{
 
         }
     }
-    
+
     makeChildren(data){
         console.log(data)
         let nodes = data.map(function(detail, index){
-            return( 
+            return(
                 <Link className="item" key={detail.id} to={detail.url}>
                     <img src={detail.imgUrl}/>
                 </Link>
@@ -26,17 +26,17 @@ class Slider extends React.Component{
         })
 
         return nodes;
-        
+
     }
 
-    render(){  
+    render(){
         return (
-            <Carousel key={this.props.id} className="h-slider" decorators={noDots} slideIndex={0} framePadding={"2%"} autoplay={true} >
+
+            <Carousel key={this.props.id} className="h-slider"  infinite >
                {this.makeChildren(this.props.data)}
-            </Carousel> 
+            </Carousel>
         )
     }
 }
 
 export default Slider;
-      

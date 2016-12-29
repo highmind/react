@@ -6,27 +6,28 @@
 
 // 这边使用 HtmlWebpackPlugin，将 bundle 好的 <script> 插入到 body。${__dirname} 为 ES6 语法对应到 __dirname
 // const webpack = require('webpack');
-// const hotModule = new webpack.HotModuleReplacementPlugin()//热加载插件   
+// const hotModule = new webpack.HotModuleReplacementPlugin()//热加载插件
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: `${__dirname}/app/index.html`,
   filename: 'index.html',
   inject: 'body',
 });
+
 const ExtractTextPlugin = require("extract-text-webpack-plugin"); //分离css
-module.exports = {
+
+module.exports =  {
    devtool: 'inline-source-map',  //配置sourcemap，方便错误调试
   // 档案起始点从 entry 进入，因为是阵列所以也可以是多个档案
   entry: {
     app: './app/index.js',
-    vendor:['react', 'react-dom', 'react-router', 'axios'] 
+    vendor:['react', 'react-dom', 'react-router', 'axios']
   },
   // output 是放入产生出来的结果的相关参数
   output: {
     path: `${__dirname}/dist`,
-     publicPath : '/',  //用于生成的 路径为 为 /index_bundle.js
+    publicPath : '/',  //用于生成的 路径为 为 /index_bundle.js
     filename: 'index_bundle.js',
   },
   module: {
@@ -37,7 +38,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react',"stage-0"],
+          presets: ['es2015', 'react',"stage-2"],
         },
       },
       {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
@@ -58,11 +59,11 @@ module.exports = {
   plugins: [
       HTMLWebpackPluginConfig,
       //chunk插件
-      new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"), 
-      //处理react waring问题 
-      new webpack.DefinePlugin({ 
-        "process.env": { 
-          NODE_ENV: JSON.stringify("production") 
+      new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
+      //处理react waring问题
+      new webpack.DefinePlugin({
+        "process.env": {
+          NODE_ENV: JSON.stringify("production")
         }
       }),
       // 分离css
