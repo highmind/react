@@ -4,7 +4,6 @@ import { Link,IndexLink } from 'react-router';
 import NavLink from './NavLink';
 import IcoLink from '../IcoLink';
 import './index.css';
-
 class Nav extends React.Component{
     constructor(props){
     super(props);
@@ -38,15 +37,15 @@ class Nav extends React.Component{
         //切换展开和关闭状态时,同时设置localStorage
         localStorage.setItem('NavShowMore', !this.state.active);
     }
-   
+
     render(){
-         let defaultNum = this.props.defaultNum || 13; 
+         let defaultNum = this.props.defaultNum || 13;
          let active = this.state.active;
          // console.log(this.props.data)
          // 当导航链接超过一定数量，隐藏超出的链接
          let navNodes = this.props.data.map(function(detail, index){
                //页面进入时，激活当前状态，使用react-router
-              if(index == 0){ 
+              if(index == 0){
                   return(
                     <IndexLink key={index} to="/" activeClassName="route-active">
                         {detail.name}
@@ -63,7 +62,7 @@ class Nav extends React.Component{
                       <NavLink key={detail.id} name={detail.name} link={detail.link} active={true} />
                   );
               }
-                   
+
         })
 
         return (
@@ -74,7 +73,7 @@ class Nav extends React.Component{
             <div className="news-nav-bottom" onClick={this.toggleDown.bind(this)}>
                   <IcoLink link={"javascript:void(0)"}  icoType={'iconfont icon-iconfontarrows'} linkCls={this.state.active ? 'news-more arrowActive' : 'news-more'} />
             </div>
-          </div>      
+          </div>
         )
     }
 

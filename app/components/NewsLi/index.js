@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
-
 import './index.css';
 
 class NewsLi extends React.Component{
     constructor(props){
         super(props);
         // 相当于ES5 getInitalState
-        this.state={
-         
-        }
+        this.state={}
     }
-    
+
     getImgNodes(imgData){
         let imgNodes = imgData.map(function(imgDetailData, index){
             return (
@@ -23,14 +20,13 @@ class NewsLi extends React.Component{
 
     getNodes(type){
       let imgNodes = this.getImgNodes(this.props.data.imgUrl);
-
       switch (type){
         // 单张图形式
         case 1:
           return(
             <div className="news-wrap">
                 <div className="news-img">
-                   
+
                     <Link to={this.props.data.url}>
                         {imgNodes}
                     </Link>
@@ -58,18 +54,17 @@ class NewsLi extends React.Component{
                       </h4>
                   </div>
                   <div className="news-img2">
-                      
+
                       <Link className="img-wrap" to={this.props.data.url}>
                           {imgNodes}
                       </Link>
-     
+
                   </div>
                   <p className="time-bar">{this.props.data.time}</p>
-                  
-              </div>  
+              </div>
             )
         break;
-      }   
+      }
     }
 
     render(){
@@ -80,7 +75,6 @@ class NewsLi extends React.Component{
           </div>
         )
     }
-
 
 }
 

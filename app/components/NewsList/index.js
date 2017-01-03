@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NewsLi from '../NewsLi';
-
 class NewsList extends React.Component{
     constructor(props){
         super(props);
@@ -13,7 +12,7 @@ class NewsList extends React.Component{
             return(
                 <NewsLi key={detailData.id} data={detailData} />
             );
-        }); 
+        });
         return(
           <div>{newsNodes}</div>
         )

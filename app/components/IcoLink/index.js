@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import './iconfont.css'; //iconfont.cn字体图标，需去掉?传值
-
 class IcoLink extends React.Component{
     render(){
         return (

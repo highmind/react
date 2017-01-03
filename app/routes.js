@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Router, Route, IndexRoute, Redirect, hashHistory,browserHistory, applyRouterMiddleware, Link} from 'react-router';
 import {App, Main, Detail} from './containers';
-// 
+//
 // const savePosition = router => {
 //     console.log('routes savePosition');
 //     let scrollTop = document.body.scrollTop;

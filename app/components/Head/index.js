@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import IcoLink from '../IcoLink';
 import './index.css';
-
 class Head extends React.Component{
     constructor(props){
         super(props);
@@ -41,7 +40,6 @@ class Head extends React.Component{
             </div>
         )
     }
-
 
 }
 
