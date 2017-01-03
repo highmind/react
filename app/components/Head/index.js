@@ -24,7 +24,7 @@ class Head extends React.Component{
             break;
             case 'BackHead':
                     return (
-                            <div className="head head-fixed">
+                            <div className="head">
                                 <IcoLink link={"javascript:history.back();"} icoType={"iconfont icon-fanhui"} linkCls={"back-btn"} />
                                 <h1 className="title">{this.props.name}</h1>
                             </div>
@@ -36,7 +36,7 @@ class Head extends React.Component{
     render(){
         let headNodes = this.getNodes(this.props.type);
         return (
-            <div className="head-wrap">
+            <div className={(this.props.type == "BackHead") ? "head-wrap head-fixed" : "head-wrap"}>
                 {headNodes}
             </div>
         )
