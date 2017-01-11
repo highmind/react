@@ -13,6 +13,6 @@ const store = configureStore();
 const rootEl = document.getElementById('app');
 ReactDOM.render(
 <Provider store={store}>
-    <Router history={browserHistory} routes={Routes}></Router>
+    <Router history={hashHistory} routes={Routes}></Router>
 </Provider>
 ,rootEl);
