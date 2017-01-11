@@ -1,14 +1,14 @@
 import Mock from 'mockjs';
-let ip = '192.168.0.148';
+let ip = 'localhost:8080';
 // 详情页mock数据
 Mock.mock('http://mockdata/get/detail', 'get', {
   "data" : {
     "title" : "@csentence(16,24)",
     "author": "@cword(4)",
     "imgUrls" : [
-        { "url" : "http://"+ ip +":8080/images/detail-img1.jpg"},
-        { "url" : "http://"+ ip +":8080/images/detail-img2.jpg"},
-        { "url" : "http://"+ ip +":8080/images/detail-img3.jpg"}
+        { "url" : "http://"+ ip +"/images/detail-img1.jpg"},
+        { "url" : "http://"+ ip +"/images/detail-img2.jpg"},
+        { "url" : "http://"+ ip +"/images/detail-img3.jpg"}
     ],
     "time" : "@time",
     "content" : "<p>@cparagraph(8)</p><p>@cparagraph(8)</p><p>@cparagraph(8)</p><p>@cparagraph(8)</p>"
@@ -136,7 +136,7 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 //           "url": "#/detail/01",
 //           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
 //           "imgUrl" : [
-//               "http://"+ ip +":8080/images/news-img1.jpg"
+//               "http://"+ ip +"/images/news-img1.jpg"
 //           ],
 //           "time" : "@natural(10,60)" + "分钟前",
 //           "title" : "1@csentence(16,24)",
@@ -147,7 +147,7 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 //           "url": "#/detail/02",
 //           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
 //            "imgUrl" : [
-//               "http://"+ ip +":8080/images/news-img2.jpg"
+//               "http://"+ ip +"/images/news-img2.jpg"
 //           ],
 //           "time" : "@natural(10,60)" + "分钟前",
 //           "title" : "2@csentence(20,24)",
@@ -158,9 +158,9 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 //           "url": "#/detail/03",
 //           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
 //            "imgUrl" : [
-//               "http://"+ ip +":8080/images/news-img1.jpg",
-//               "http://"+ ip +":8080/images/news-img2.jpg",
-//               "http://"+ ip +":8080/images/news-img3.jpg"
+//               "http://"+ ip +"/images/news-img1.jpg",
+//               "http://"+ ip +"/images/news-img2.jpg",
+//               "http://"+ ip +"/images/news-img3.jpg"
 //           ],
 //           "time" : "@natural(10,60)" + "分钟前",
 //           "title" : "3@csentence(20,24)",
@@ -171,7 +171,7 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 //           "url": "#/detail/04",
 //           //"imgUrl" : "@image(216x148,@color,#FFF,@word)",
 //            "imgUrl" : [
-//               "http://"+ ip +":8080/images/news-img4.jpg"
+//               "http://"+ ip +"/images/news-img4.jpg"
 //           ],
 //           "time" : "@natural(10,60)" + "分钟前",
 //           "title" : "4@csentence(20,24)",
@@ -182,9 +182,9 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 //           "url": "#/detail/05",
 //           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
 //           "imgUrl" : [
-//               "http://"+ ip +":8080/images/news-img5.jpg",
-//               "http://"+ ip +":8080/images/news-img6.jpg",
-//               "http://"+ ip +":8080/images/news-img2.jpg"
+//               "http://"+ ip +"/images/news-img5.jpg",
+//               "http://"+ ip +"/images/news-img6.jpg",
+//               "http://"+ ip +"/images/news-img2.jpg"
 //           ],
 //           "time" : "@natural(10,60)" + "分钟前",
 //           "title" : "5@csentence(20,24)",
@@ -195,7 +195,7 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 //           "url": "#/detail/06",
 //           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
 //            "imgUrl" : [
-//               "http://"+ ip +":8080/images/news-img6.jpg"
+//               "http://"+ ip +"/images/news-img6.jpg"
 //           ],
 //           "time" : "@natural(10,60)" + "分钟前",
 //           "title" : "6@csentence(20,24)",
@@ -206,7 +206,7 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 //           "url": "#/detail/07",
 //           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
 //            "imgUrl" : [
-//               "http://"+ ip +":8080/images/news-img1.jpg"
+//               "http://"+ ip +"/images/news-img1.jpg"
 //           ],
 //           "time" : "@natural(10,60)" + "分钟前",
 //           "title" : "7@csentence(20,24)",
@@ -217,7 +217,7 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 //           "url": "#/detail/08",
 //           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
 //            "imgUrl" : [
-//              "http://"+ ip +":8080/images/news-img2.jpg"
+//              "http://"+ ip +"/images/news-img2.jpg"
 //           ],
 //           "time" : "@natural(10,60)" + "分钟前",
 //           "title" : "8@csentence(20,24)",
@@ -228,7 +228,7 @@ Mock.mock('http://mockdata/get/nav', 'get', {
 //           "url": "#/detail/09",
 //           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
 //            "imgUrl" : [
-//               "http://"+ ip +":8080/images/news-img3.jpg"
+//               "http://"+ ip +"/images/news-img3.jpg"
 //           ],
 //           "time" : "@natural(10,60)" + "分钟前",
 //           "title" : "9@csentence(20,24)",
@@ -249,17 +249,17 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
       "data":[
         {
           "url" : "/detail/01",
-          "imgUrl" :  "http://"+ ip +":8080/images/timg@natural(1, 3).jpg",
+          "imgUrl" :  "http://"+ ip +"/images/timg@natural(1, 3).jpg",
           "id":"@id"
         },
         {
           "url" : "/detail/02",
-          "imgUrl" :  "http://"+ ip +":8080/images/timg@natural(1, 3).jpg",
+          "imgUrl" :  "http://"+ ip +"/images/timg@natural(1, 3).jpg",
            "id":"@id"
         },
         {
           "url" : "/detail/03",
-          "imgUrl" :  "http://"+ ip +":8080/images/timg@natural(1, 3).jpg",
+          "imgUrl" :  "http://"+ ip +"/images/timg@natural(1, 3).jpg",
            "id":"@id"
         }
       ]
@@ -270,7 +270,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "url": "/detail/01",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : [
-              "http://"+ ip +":8080/images/news-img1.jpg"
+              "http://"+ ip +"/images/news-img1.jpg"
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "1@csentence(16,24)",
@@ -281,7 +281,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "url": "/detail/02",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
-              "http://"+ ip +":8080/images/news-img2.jpg"
+              "http://"+ ip +"/images/news-img2.jpg"
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "2@csentence(20,24)",
@@ -292,9 +292,9 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "url": "/detail/03",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
-              "http://"+ ip +":8080/images/news-img1.jpg",
-              "http://"+ ip +":8080/images/news-img2.jpg",
-              "http://"+ ip +":8080/images/news-img3.jpg"
+              "http://"+ ip +"/images/news-img1.jpg",
+              "http://"+ ip +"/images/news-img2.jpg",
+              "http://"+ ip +"/images/news-img3.jpg"
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "3@csentence(20,24)",
@@ -305,7 +305,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "url": "/detail/04",
           //"imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
-              "http://"+ ip +":8080/images/news-img4.jpg"
+              "http://"+ ip +"/images/news-img4.jpg"
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "4@csentence(20,24)",
@@ -316,9 +316,9 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "url": "/detail/05",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
           "imgUrl" : [
-              "http://"+ ip +":8080/images/news-img5.jpg",
-              "http://"+ ip +":8080/images/news-img6.jpg",
-              "http://"+ ip +":8080/images/news-img2.jpg"
+              "http://"+ ip +"/images/news-img5.jpg",
+              "http://"+ ip +"/images/news-img6.jpg",
+              "http://"+ ip +"/images/news-img2.jpg"
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "5@csentence(20,24)",
@@ -329,7 +329,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "url": "/detail/06",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
-              "http://"+ ip +":8080/images/news-img6.jpg"
+              "http://"+ ip +"/images/news-img6.jpg"
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "6@csentence(20,24)",
@@ -340,7 +340,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "url": "/detail/07",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
-              "http://"+ ip +":8080/images/news-img1.jpg"
+              "http://"+ ip +"/images/news-img1.jpg"
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "7@csentence(20,24)",
@@ -351,7 +351,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "url": "/detail/08",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
-             "http://"+ ip +":8080/images/news-img2.jpg"
+             "http://"+ ip +"/images/news-img2.jpg"
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "8@csentence(20,24)",
@@ -362,7 +362,7 @@ Mock.mock('http://mockdata/get/newslist', 'get', {
           "url": "/detail/09",
           // "imgUrl" : "@image(216x148,@color,#FFF,@word)",
            "imgUrl" : [
-              "http://"+ ip +":8080/images/news-img3.jpg"
+              "http://"+ ip +"/images/news-img3.jpg"
           ],
           "time" : "@natural(10,60)" + "分钟前",
           "title" : "9@csentence(20,24)",

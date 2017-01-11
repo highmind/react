@@ -6,7 +6,7 @@
 
 // 这边使用 HtmlWebpackPlugin，将 bundle 好的 <script> 插入到 body。${__dirname} 为 ES6 语法对应到 __dirname
 // const webpack = require('webpack');
-// const hotModule = new webpack.HotModuleReplacementPlugin()//热加载插件   
+// const hotModule = new webpack.HotModuleReplacementPlugin()//热加载插件
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -17,11 +17,11 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 const ExtractTextPlugin = require("extract-text-webpack-plugin"); //分离css
 module.exports = {
- 
+
   // 档案起始点从 entry 进入，因为是阵列所以也可以是多个档案
   entry: {
     app: './app/index.js',
-    vendor:['react', 'react-dom', 'react-router', 'axios'] 
+    vendor:['react', 'react-dom', 'react-router', 'axios']
   },
   // output 是放入产生出来的结果的相关参数
   output: {
@@ -58,11 +58,11 @@ module.exports = {
   plugins: [
       HTMLWebpackPluginConfig,
       //chunk插件
-      new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"), 
-      //处理react waring问题 
-      new webpack.DefinePlugin({ 
-        "process.env": { 
-          NODE_ENV: JSON.stringify("production") 
+      new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
+      //处理react waring问题
+      new webpack.DefinePlugin({
+        "process.env": {
+          NODE_ENV: JSON.stringify("production")
         }
       }),
       // 分离css
